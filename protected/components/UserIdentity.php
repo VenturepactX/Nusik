@@ -5,8 +5,12 @@
  * It contains the authentication method that checks if the provided
  * data can identity the user.
  */
+ //public $layout='//layouts/main';
+	
+ //public $layout='//layouts/main';
 class UserIdentity extends CUserIdentity
 {
+	public $layout='//userlayout/main';
 	/**
 	 * Authenticates a user.
 	 * The example implementation makes sure if the username and password
