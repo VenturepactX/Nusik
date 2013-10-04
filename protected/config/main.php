@@ -16,6 +16,9 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+		'application.extensions.ImageFly.components.*',
+		'application.extensions.ckeditor.CKEditorWidget'
+		
 	),
 
 	'modules'=>array(
@@ -26,7 +29,7 @@ return array(
 			'password'=>'123',
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
 			'ipFilters'=>array('127.0.0.1','::1'),
-		),
+		),'admin',
 		
 	),
 
@@ -36,6 +39,10 @@ return array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
 		),
+		'imagemod' => array(
+               //alias to dir, where you unpacked extension
+    'class' => 'application.extensions.imagemodifier.CImageModifier',
+),
 		// uncomment the following to enable URLs in path-format
 		/*
 		'urlManager'=>array(

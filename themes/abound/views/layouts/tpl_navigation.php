@@ -8,7 +8,7 @@
           </a>
      
           <!-- Be sure to leave the brand out there if you want it shown -->
-          <a class="brand" href="#">Admin<small> Musik</small></a>
+          <a class="brand" href="/nusik/index.php?r=site&view=index">Nusik<small> Admin Panel</small></a>
           
           <div class="nav-collapse">
 			<?php $this->widget('zii.widgets.CMenu',array(
@@ -17,70 +17,57 @@
 					'itemCssClass'=>'item-test',
                     'encodeLabel'=>false,
                     'items'=>array(
-							    array('label'=>'First Fan', 'url'=>array('/site/index'),'visible'=>!Yii::app()->user->isGuest),
-								array('label'=>'My PlayList', 'url'=>array('/site/index'),'visible'=>!Yii::app()->user->isGuest),
-								
-		    
-						     array('label'=>'User Details<span class="caret"></span>', 'url'=>'#','visible'=>!Yii::app()->user->isGuest,'itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"), 
-							'items'=>array(
-											 array('label'=>'Roles', 'url'=>'#','visible'=>!Yii::app()->user->isGuest),
-											array('label'=>'Profile ', 'url'=>'#','visible'=>!Yii::app()->user->isGuest),
-											array('label'=>'City', 'url'=>'#','visible'=>!Yii::app()->user->isGuest),
-											array('label'=>'State', 'url'=>'#','visible'=>!Yii::app()->user->isGuest),
-											
+							   array('label'=>'User Mgmt<span class="caret"></span>', 'url'=>'#','visible'=>!Yii::app()->user->isGuest,'itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"), 			'items'=>array(
+		                                array('label'=>'Roles', 'url'=>array('/admin/roles', 'view'=>'index'),'visible'=>!Yii::app()->user->isGuest),
+   										array('label'=>'SignUp ', 'url'=>array('/admin/login', 'view'=>'index'),'visible'=>!Yii::app()->user->isGuest),					
+   										array('label'=>'User Details ', 'url'=>array('/admin/userdetails', 'view'=>'index'),'visible'=>!Yii::app()->user->isGuest),
+										array('label'=>'City', 'url'=>array('/admin/City', 'view'=>'index'),'visible'=>!Yii::app()->user->isGuest),
+										array('label'=>'Country', 'url'=>array('/admin/country', 'view'=>'index'),'visible'=>!Yii::app()->user->isGuest),
+										array('label'=>'User Logs', 'url'=>array('/admin/userlog', 'view'=>'index'),'visible'=>!Yii::app()->user->isGuest),
+										 
+										
 							)),
-							
-							
-													 array('label'=>'Albubs<span class="caret"></span>', 'url'=>'#','visible'=>!Yii::app()->user->isGuest,'itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"), 
+		
+   								 array('label'=>'Media Mgmt<span class="caret"></span>', 'url'=>'#','visible'=>!Yii::app()->user->isGuest,'itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"), 
 													'items'=>array(
-													 array('label'=>'Photo', 'url'=>'#','visible'=>!Yii::app()->user->isGuest),
-													array('label'=>'Album Comments ', 'url'=>'#','visible'=>!Yii::app()->user->isGuest),
+													 array('label'=>'Album', 'url'=>array('/admin/albums', 'view'=>'index'),'visible'=>!Yii::app()->user->isGuest),
+													array('label'=>'Photos', 'url'=>array('/admin/photos', 'view'=>'index'),'visible'=>!Yii::app()->user->isGuest),
 													)),
 											
-													 array('label'=>'Comments<span class="caret"></span>', 'url'=>'#','visible'=>!Yii::app()->user->isGuest,'itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"), 
+							  array('label'=>'Music Mgmt<span class="caret"></span>', 'url'=>'#','visible'=>!Yii::app()->user->isGuest,'itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"), 
 													'items'=>array(
-													 array('label'=>'Track', 'url'=>'#','visible'=>!Yii::app()->user->isGuest),
-													array('label'=>'Track Albums ', 'url'=>'#','visible'=>!Yii::app()->user->isGuest),
-													array('label'=>'Track Comments', 'url'=>'#','visible'=>!Yii::app()->user->isGuest),
-													array('label'=>'Track has comments ', 'url'=>'#','visible'=>!Yii::app()->user->isGuest),
+													 array('label'=>'Genres', 'url'=>array('/admin/genre', 'view'=>'index'),'visible'=>!Yii::app()->user->isGuest),
+													 array('label'=>'Track Album', 'url'=>array('/admin/trackalbum', 'view'=>'index'),'visible'=>!Yii::app()->user->isGuest),
+													array('label'=>'Tracks', 'url'=>array('/admin/track', 'view'=>'index'),'visible'=>!Yii::app()->user->isGuest),
+													array('label'=>'PlayLists', 'url'=>array('/admin/myplaylist', 'view'=>'index'),'visible'=>!Yii::app()->user->isGuest),								 
 													
 													)),
-													 array('label'=>'User Log<span class="caret"></span>', 'url'=>'#','visible'=>!Yii::app()->user->isGuest,'itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"), 
+							 array('label'=>'Ratings Mgmt<span class="caret"></span>', 'url'=>'#','visible'=>!Yii::app()->user->isGuest,'itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"), 
 													'items'=>array(
-													 array('label'=>'Active', 'url'=>'#','visible'=>!Yii::app()->user->isGuest),
-													array('label'=>'Premmision', 'url'=>'#','visible'=>!Yii::app()->user->isGuest),
+													 array('label'=>'Rating', 'url'=>array('/admin/rating', 'view'=>'index'),'visible'=>!Yii::app()->user->isGuest),
+													array('label'=>'Likes', 'url'=>array('/admin/like', 'view'=>'index'),'visible'=>!Yii::app()->user->isGuest),
 													)),
 													
-													 array('label'=>'Genre<span class="caret"></span>', 'url'=>'#','visible'=>!Yii::app()->user->isGuest,'itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"), 
+							 array('label'=>'Artist Details<span class="caret"></span>', 'url'=>'#','visible'=>!Yii::app()->user->isGuest,'itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"), 
 													'items'=>array(
-													 array('label'=>'Genre Track', 'url'=>'#','visible'=>!Yii::app()->user->isGuest),
+													 array('label'=>'Artist Info', 'url'=>array('/admin/artdetails', 'view'=>'index'),'visible'=>!Yii::app()->user->isGuest),
+													 array('label'=>'News', 'url'=>array('/admin/news', 'view'=>'index'),'visible'=>!Yii::app()->user->isGuest),
 													)),
 							    
 							    
-							    
-						       
-		    
-								//array('label'=>'Dashboard', 'url'=>array('/site/index'),'visible'=>!Yii::app()->user->isGuest),
-								//array('label'=>'Graphs & Charts', 'url'=>array('/site/page', 'view'=>'graphs'),'visible'=>!Yii::app()->user->isGuest),
-								//array('label'=>'Forms', 'url'=>array('/site/page', 'view'=>'forms'),'visible'=>!Yii::app()->user->isGuest),
-								//array('label'=>'Tables', 'url'=>array('/site/page', 'view'=>'tables'),'visible'=>!Yii::app()->user->isGuest),
-								//			array('label'=>'Interface', 'url'=>array('/site/page', 'view'=>'interface'),'visible'=>!Yii::app()->user->isGuest),
-								//array('label'=>'Typography', 'url'=>array('/site/page', 'view'=>'typography'),'visible'=>!Yii::app()->user->isGuest),
-								/*array('label'=>'Gii generated', 'url'=>array('customer/index')),*/
-								array('label'=>'My Account <span class="caret"></span>', 'url'=>'#','visible'=>!Yii::app()->user->isGuest,'itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"), 
+							array('label'=>'Comments <span class="caret"></span>', 'url'=>'#','visible'=>!Yii::app()->user->isGuest,'itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"), 
 								'items'=>array(
-												 array('label'=>'News<span class="badge badge-warning pull-right"></span>','url'=>'#','visible'=>!Yii::app()->user->isGuest),
-												array('label'=>'My Tasks <span class="badge badge-important pull-right"></span>', 'url'=>'#','visible'=>!Yii::app()->user->isGuest),
-												array('label'=>'My Invoices <span class="badge badge-info pull-right"></span>', 'url'=>'#','visible'=>!Yii::app()->user->isGuest),
-												array('label'=>'Separated link', 'url'=>'#','visible'=>!Yii::app()->user->isGuest),
-												array('label'=>'One more separated link', 'url'=>'#','visible'=>!Yii::app()->user->isGuest),
+												 array('label'=>'Profile Comments','url'=>array('/admin/profilecomments', 'view'=>'index'),'visible'=>!Yii::app()->user->isGuest),
+										 array('label'=>'Photo Album Comments','url'=>array('/admin/pAlbumComments', 'view'=>'index'),'visible'=>!Yii::app()->user->isGuest), 
+										 array('label'=>'Track Comments','url'=>array('/admin/trackComments', 'view'=>'index'),'visible'=>!Yii::app()->user->isGuest),
 								)),
 								array('label'=>'Search', 'url'=>array('/site/index'),'visible'=>!Yii::app()->user->isGuest),
 								
 								array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-								array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
+								array('label'=>'Logout ('.Yii::app()->user->getState('dname').')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
 							    ),
-                )); ?>
+                )); 
+				//CVarDumper::dump(Yii::app()->user->getState('dname'),10,1);die;?>
     	</div>
     </div>
 	</div>

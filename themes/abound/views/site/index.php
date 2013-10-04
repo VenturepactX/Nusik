@@ -18,35 +18,47 @@ $gridDataProvider = new CArrayDataProvider(array(
   <div class="span3 ">
 	<div class="stat-block">
 	  <ul>
-		<li class="stat-graph inlinebar" id="weekly-visit">8,4,6,5,9,10</li>
-		<li class="stat-count"><span>$23,000</span><span>Weekly Sales</span></li>
-		<li class="stat-percent"><span class="text-success stat-percent">20%</span></li>
-	  </ul>
-	</div>
+					  <li><span class="summary-icon"><img src="<?php echo $baseUrl ;?>/img/group.png" width="36" height="36" alt="Active Members">
+					</span></li>
+					<li class="stat-count"><span>23,000</span><span>Active User</span></li>
+					<li class="stat-percent"><span class="text-success stat-percent">20%</span></li>
+
+		</ul></div>
   </div>
   <div class="span3 ">
 	<div class="stat-block">
-	  <ul>
-		  </ul>
-	</div>
-  </div>
-  <div class="span3 ">
-	<div class="stat-block">
-	  <ul>
+		  <ul>
+					  <li><span class="summary-icon"><img src="<?php echo $baseUrl ;?>/img/group.png" width="36" height="36" alt="Active Members">
+					</span></li>
+					<li class="stat-count"><span>23,000</span><span>Deactive User</span></li>
+					<li class="stat-percent"><span class="text-success stat-percent">20%</span></li>
+
 		</ul>
 	</div>
   </div>
   <div class="span3 ">
 	<div class="stat-block">
-	  <ul>
-		  </ul>
+		  <ul>
+					  <li><span class="summary-icon"><img src="<?php echo $baseUrl ;?>/img/folder_page.png" width="36" height="36" alt="Active Members">
+					</span></li>
+					<li class="stat-count"><span>23,000</span><span>Total Visitor</span></li>
+					<li class="stat-percent"><span class="text-success stat-percent">20%</span></li>
+
+		</ul>
+	</div>
+  </div>
+  <div class="span3 ">
+	<div class="stat-block">
+			   <ul>
+							  <li><span class="summary-icon"><img src="<?php echo $baseUrl ;?>/img/page_white_excel.png" width="36" height="36" alt="Active Members">
+							</span></li>
+							<li class="stat-count"><span>23,000</span><span>Online User</span></li>
+							<li class="stat-percent"><span class="text-success stat-percent">20%</span></li>
+		
+				</ul>
 	</div>
   </div>
 </div>
-
-<div class="row-fluid">
-
-    
 	<div class="span9">
       <?php
 		$this->beginWidget('zii.widgets.CPortlet', array(
@@ -60,43 +72,17 @@ $gridDataProvider = new CArrayDataProvider(array(
         <?php $this->endWidget(); ?>
         
 	</div>
-	<div class="span3">
-		<div class="summary">
-          <ul>
-          	<li>
-          		<span class="summary-icon">
-                	<img src="<?php echo $baseUrl ;?>/img/folder_page.png" width="36" height="36" alt="Recent Conversions">
-                </span>
-                <span class="summary-number">630</span>
-                <span class="summary-title"> Total Visitors</span></li>
-        </li>
-            <li>
-            	<span class="summary-icon">
-                	<img src="<?php echo $baseUrl ;?>/img/group.png" width="36" height="36" alt="Active Members">
-                </span>
-                <span class="summary-number">654,321</span>
-                <span class="summary-title"> Active Members</span>
-            </li>
-            <li>
-            	<span class="summary-icon">
-                	<img src="<?php echo $baseUrl ;?>/img/group.png" width="36" height="36" alt="Active Members">
-                </span>
-                <span class="summary-number">654,321</span>
-                <span class="summary-title"> DeActive Members</span>
-            </li>
-             <li>
-            	<span class="summary-icon">
-                	<img src="<?php echo $baseUrl ;?>/img/page_white_excel.png" width="36" height="36" alt="Open Quotes<">
-                </span>
-                <span class="summary-number">53</span>
-                <span class="summary-title"> Open Quotes</span>
-            </li>
-           
-            		
-          </ul>
-        </div>
-
+<div style="float:left; width:23%; margin-left:2%;">
+	<?php
+		$this->beginWidget('zii.widgets.CPortlet', array(
+			'title'=>'<span class="icon-picture"></span>Welcome '.Yii::app()->user->name,
+			'titleCssClass'=>''
+		));
+		?>
+		<p>Your last activity:<?php  $mm=null; $mm=Yii::app()->user->getState('date_time'); echo $mm; ?></p> 
+        <?php $this->endWidget(); ?>
 	</div>
+
 </div>
 
 
@@ -117,24 +103,7 @@ $gridDataProvider = new CArrayDataProvider(array(
 			),
 		)); ?>
 	</div><!--/span-->
-	<div class="span6">
-		 <?php $this->widget('zii.widgets.grid.CGridView', array(
-			/*'type'=>'striped bordered condensed',*/
-			'htmlOptions'=>array('class'=>'table table-striped table-bordered table-condensed'),
-			'dataProvider'=>$gridDataProvider,
-			'template'=>"{items}",
-			'columns'=>array(
-				array('name'=>'id', 'header'=>'#'),
-				array('name'=>'firstName', 'header'=>'First name'),
-				array('name'=>'lastName', 'header'=>'Last name'),
-				array('name'=>'language', 'header'=>'Language'),
-				array('name'=>'usage', 'header'=>'Usage', 'type'=>'raw'),
-				
-			),
-		)); ?>
-        	
-	</div><!--/span-->
-</div><!--/row-->
+	</div><!--/row-->
 
 <div class="row-fluid">
 	<div class="span6">
@@ -151,6 +120,7 @@ $gridDataProvider = new CArrayDataProvider(array(
 	</div><!--/span-->
     <div class="span6">
     	<?php
+
 		$this->beginWidget('zii.widgets.CPortlet', array(
 			'title'=>'<span class="icon-th-list"></span> Visitors Chart',
 			'titleCssClass'=>''
