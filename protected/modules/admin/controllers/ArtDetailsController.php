@@ -37,7 +37,7 @@ class ArtDetailsController extends Controller
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -70,6 +70,7 @@ class ArtDetailsController extends Controller
 		if(isset($_POST['ArtDetails']))
 		{
 			$model->attributes=$_POST['ArtDetails'];
+			 $model->date_time=date('Y-m-d H:i');
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}

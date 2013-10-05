@@ -70,6 +70,16 @@ class AlbumsController extends Controller
 		if(isset($_POST['Albums']))
 		{
 			$model->attributes=$_POST['Albums'];
+			
+			$model->date_time=date('Y-m-d H:i');
+			$folder=Yii::getPathOfAlias('webroot').'/images/Albums/';// folder for uploaded files
+
+// you can use the ID or any property that is unique to the model
+if(!is_dir($folder.$model->name)){
+      //  CVarDumper::dump($folder.$model->name,10,1);die;
+		mkdir($folder.$model->name);
+		
+}
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -90,10 +100,16 @@ class AlbumsController extends Controller
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
+		$data=Albums::model()->findByAttributes(array('id'=>$model->id));
 		if(isset($_POST['Albums']))
 		{
+			
 			$model->attributes=$_POST['Albums'];
+			$model->date_time=date('Y-m-d H:i');
+			$folder=Yii::getPathOfAlias('webroot').'/images/Albums/';
+			rename($folder.$data->name,$folder.$model->name);
+			
+			
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}

@@ -18,6 +18,12 @@
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
+<div class="row">
+		<?php echo $form->labelEx($model,'login_id'); ?>
+		<?php $log=CHtml::listData(login::model()->findAll(), 'id','display_name'); ?>
+		<?php 
+		  echo $form->dropDownList($model,'login_id',$log,array('empty'=>'--Select User--'));?><?php echo $form->error($model,'login_id'); ?>
+	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'name'); ?>
@@ -39,22 +45,25 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'release_date'); ?>
-		<?php echo $form->textField($model,'release_date'); ?>
+				<?php Yii::import('application.extensions.CJuiDateTimePicker.CJuiDateTimePicker');
+            $this->widget('CJuiDateTimePicker',array(
+                'model'=>$model, //Model object
+                'attribute'=>'release_date', //attribute name
+                'mode'=>'date', //use "time","date" or "datetime" (default)
+                'options'=>array("dateFormat"=>'yy/mm/dd'), // jquery plugin options
+                'language' => ''
+            ));
+        ?>
 		<?php echo $form->error($model,'release_date'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'status'); ?>
-		<?php echo $form->textField($model,'status'); ?>
+	<?php echo $form->checkBox($model,'status', array('value'=>1, 'uncheckValue'=>0)); ?>
 		<?php echo $form->error($model,'status'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'login_id'); ?>
-		<?php echo $form->textField($model,'login_id'); ?>
-		<?php echo $form->error($model,'login_id'); ?>
-	</div>
-
+	
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>

@@ -18,6 +18,14 @@
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
+	<div class="row">
+		<?php echo $form->labelEx($model,'user_details_id'); ?>
+		<?php $list=CHtml::listData(UserDetails::model()->findAll(), 'id','first_name');  
+		  echo $form->dropDownList($model,'user_details_id',$list, array('empty'=>'--Select a Artisit--'));
+		  //echo $form->textField($model,'user_master_user_id'); ?>
+		 <?php echo $form->error($model,'user_details_id'); ?>
+			
+	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'bio'); ?>
@@ -44,22 +52,13 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'date_time'); ?>
-		<?php echo $form->textField($model,'date_time'); ?>
-		<?php echo $form->error($model,'date_time'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model,'status'); ?>
-		<?php echo $form->textField($model,'status'); ?>
+		<?//php echo $form->textField($model,'status'); ?>
+		<?php echo $form->checkBox($model,'status', array('value'=>1, 'uncheckValue'=>0)); ?>
+	
 		<?php echo $form->error($model,'status'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'user_details_id'); ?>
-		<?php echo $form->textField($model,'user_details_id'); ?>
-		<?php echo $form->error($model,'user_details_id'); ?>
-	</div>
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>

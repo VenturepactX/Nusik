@@ -4,7 +4,7 @@
 
 $this->breadcrumbs=array(
 	'Tracks'=>array('index'),
-	$model->id,
+	$model->name,
 );
 
 $this->menu=array(
@@ -30,5 +30,7 @@ $this->menu=array(
 		'status',
 		'track_album_id',
 		'login_id',
+		'genre_id',
+		'name',
 	),
 )); ?>

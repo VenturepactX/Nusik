@@ -26,27 +26,40 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'date_time'); ?>
-		<?php echo $form->textField($model,'date_time'); ?>
-		<?php echo $form->error($model,'date_time'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model,'event_on'); ?>
-		<?php echo $form->textField($model,'event_on'); ?>
+		<?php Yii::import('application.extensions.CJuiDateTimePicker.CJuiDateTimePicker');
+            $this->widget('CJuiDateTimePicker',array(
+                'model'=>$model, //Model object
+                'attribute'=>'event_on', //attribute name
+                'mode'=>'date', //use "time","date" or "datetime" (default)
+                'options'=>array("dateFormat"=>'yy/mm/dd'), // jquery plugin options
+                'language' => ''
+            ));
+        ?>
 		<?php echo $form->error($model,'event_on'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'status'); ?>
-		<?php echo $form->textField($model,'status'); ?>
-		<?php echo $form->error($model,'status'); ?>
+		
+	<?php echo $form->checkBox($model,'status', array('value'=>1, 'uncheckValue'=>0)); ?>
+	<?php echo $form->error($model,'status'); ?>
 	</div>
 
 	<div class="row">
+		<?//php echo $form->labelEx($model,'login_id'); ?>
+		<?//php echo $form->textField($model,'login_id'); ?>
+		<?//php echo $form->error($model,'login_id'); ?>
+		
+		<div class="row">
 		<?php echo $form->labelEx($model,'login_id'); ?>
-		<?php echo $form->textField($model,'login_id'); ?>
-		<?php echo $form->error($model,'login_id'); ?>
+		<?php $list=CHtml::listData(login::model()->findAll(), 'id','display_name');  
+		  echo $form->dropDownList($model,'login_id',$list, array('empty'=>'--Select a Name--'));
+		  //echo $form->textField($model,'user_master_user_id'); ?>
+		 <?php echo $form->error($model,'login_id'); ?>
+			
+	</div>
+
 	</div>
 
 	<div class="row buttons">

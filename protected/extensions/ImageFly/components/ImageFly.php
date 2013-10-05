@@ -255,7 +255,7 @@ class ImageFly
     public function getPath($model, $attribute) {
         
         if ($model->$attribute instanceof CUploadedFile) {
-            return "images" . DIRECTORY_SEPARATOR . $model->imagePath . md5($model->$attribute->getName()) . "." . $model->$attribute->getExtensionName();
+            return "images" . DIRECTORY_SEPARATOR . $model->imagePath . time()  . "." . $model->$attribute->getExtensionName();
         }
 
         throw new Exception("$attribute not found.");

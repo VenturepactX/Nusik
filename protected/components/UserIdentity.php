@@ -21,6 +21,8 @@ class UserIdentity extends CUserIdentity
 	 * against some persistent user identity storage (e.g. database).
 	 * @return boolean whether authentication succeeds.
 	 */
+	private $id;
+
 	public function authenticate()
 	{
 		$login=Login::model()->findByAttributes(array('email'=>$this->username));
@@ -30,16 +32,8 @@ class UserIdentity extends CUserIdentity
 			$this->errorCode=self::ERROR_PASSWORD_INVALID;
 		else
 		{
+		$this->id=$login->id;
 		$this->setState('dname', $login->display_name);
-		$browser=$_SERVER['HTTP_USER_AGENT'];
-		$ip=$_SERVER['REMOTE_ADDR'];
-		
-		$log = new userlog;
-		$log->browser_type=$browser;
-		$log->ip_address=$ip;
-     	$log->date_time=date('Y-m-d H:i');
-	    $log->login_id=$login->id;
-		$log->save();
 	// 	CVarDumper::dump($log,10,1);die;
 			$this->errorCode=self::ERROR_NONE;
 			 

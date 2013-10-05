@@ -2,6 +2,8 @@
 /* @var $this PhotosController */
 /* @var $data Photos */
 ?>
+<div>
+<div style="float:left; margin-left:60%; width:150px; height:150px;  overflow:hidden; position:absolute; margin-top:0.5%;"><?php  echo CHtml::image(ImageFly::Instance()->get($data, 'photo_path', 150, 150));?></div>
 
 <div class="view">
 
@@ -34,4 +36,4 @@
 	<br />
 
 
-</div>
+</div></div>

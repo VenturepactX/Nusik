@@ -20,10 +20,28 @@ class Photos extends CActiveRecord
 	/**
 	 * @return string the associated database table name
 	 */
-	public function tableName()
-	{
-		return 'photos';
-	}
+	   //public $data=Albums::model()->findByAttributes(array('id'=>$this->albums_id));
+	   public $imagePath='Albums/';
+	    public $imagePathThumb='Albums/thumb/'; 
+	   /*public function init()
+		{
+		 $data=Albums::model()->findByAttributes(array('id'=>$this->albums_id));
+	 	 $imagePath   = 'Albums/'.$data->name.'/';
+		 $imagePathThumb   = 'Albums/thumb/'.$data->name.'/';
+		}*/
+		public function tableName()
+		{
+			  
+			return 'photos';
+		}
+                protected function beforeSave() {
+                  if ($this->photo_path instanceof CUploadedFile) 
+                  {
+                      $this->photo_path =time() . "." . $this->photo_path->getExtensionName();
+                  }
+ 
+  return parent::beforeSave();
+}
 
 	/**
 	 * @return array validation rules for model attributes.

@@ -32,6 +32,7 @@ class UserDetails extends CActiveRecord
     /**
      * @return string the associated database table name
      */
+	 
      
          public $imagePath = 'profile/';
         public $imagePathThumb = 'profile/thumb/';
@@ -40,10 +41,10 @@ class UserDetails extends CActiveRecord
             {
                 return 'user_details';
             }
-                protected function beforeSave() {
+            protected function beforeSave() {
                   if ($this->image instanceof CUploadedFile) 
                   {
-                      $this->image = md5($this->image->getName()) . "." . $this->image->getExtensionName();
+                      $this->image = time() . "." . $this->image->getExtensionName();
                   }
  
   return parent::beforeSave();

@@ -37,7 +37,7 @@ class TrackController extends Controller
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -70,15 +70,46 @@ class TrackController extends Controller
 		if(isset($_POST['Track']))
 		{
 			$model->attributes=$_POST['Track'];
+			$model->date_time=date('Y-m-d H:i');
+			$userfile_extn = explode("/", strtolower($_FILES['Track']['type']['url']));
+			$newNamw	=	$model->name.'.'.$userfile_extn[1];
+			$fileTmpLoc = $_FILES["Track"]["tmp_name"]['url'];
+			// Path and file name
+			$pathAndName = "songs/".$newNamw;
+			// Run the move_uploaded_file() function here
+			$moveResult = move_uploaded_file($fileTmpLoc, $pathAndName);
+			$model->url	=	$newNamw;
+
+			//$file = CUploadedFile::getInstance($model, 'url');
+
+			 //CVarDumper::dump($file,10,1);die;
 			if($model->save())
+			{
+			$this->updateTrack($model, $model->url);
 				$this->redirect(array('view','id'=>$model->id));
+			}
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
 		));
 	}
-
+ 		 public function updateTrack($model, $myfile ) {
+           if (is_object($myfile) && get_class($myfile)==='CUploadedFile') {
+                $ext = $model->url->getExtensionName();
+                 if ($model->filename=='' or is_null($model->filename)) {
+                    $model->filename = time();
+                $model->filename=$filename;
+                }
+                $model->save();
+                $model->url->saveAs($model->getPath());  //model->getPath see below
+                $image = Yii::app()->url->load($model->getPath());
+			return true;
+			}
+			else 
+			return false;	
+	
+	}
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
@@ -94,9 +125,22 @@ class TrackController extends Controller
 		if(isset($_POST['Track']))
 		{
 			$model->attributes=$_POST['Track'];
+			$userfile_extn = explode("/", strtolower($_FILES['Track']['type']['url']));
+			$newNamw	=	$model->name.'.'.$userfile_extn[1];
+			$fileTmpLoc = $_FILES["Track"]["tmp_name"]['url'];
+			// Path and file name
+			$pathAndName = "songs/".$newNamw;
+			// Run the move_uploaded_file() function here
+			$moveResult = move_uploaded_file($fileTmpLoc, $pathAndName);
+			$model->url	=	$newNamw;
+
 			if($model->save())
+			{
+			
+			$this->updateTrack($model, $model->url);
 				$this->redirect(array('view','id'=>$model->id));
-		}
+			}
+}
 
 		$this->render('update',array(
 			'model'=>$model,

@@ -42,6 +42,14 @@
 	<?php echo CHtml::encode($data->login_id); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('genre_id')); ?>:</b>
+	<?php echo CHtml::encode($data->genre_id); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('name')); ?>:</b>
+	<?php echo CHtml::encode($data->name); ?>
+	<br />
+
 	*/ ?>
 
 </div>

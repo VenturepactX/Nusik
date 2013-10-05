@@ -55,6 +55,8 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'status',
 		'track_album_id',
 		'login_id',
+		'genre_id',
+		'name',
 		*/
 		array(
 			'class'=>'CButtonColumn',

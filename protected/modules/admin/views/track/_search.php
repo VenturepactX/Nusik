@@ -56,6 +56,16 @@
 		<?php echo $form->textField($model,'login_id'); ?>
 	</div>
 
+	<div class="row">
+		<?php echo $form->label($model,'genre_id'); ?>
+		<?php echo $form->textField($model,'genre_id'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'name'); ?>
+		<?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>80)); ?>
+	</div>
+
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Search'); ?>
 	</div>

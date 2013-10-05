@@ -26,26 +26,28 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'date_time'); ?>
-		<?php echo $form->textField($model,'date_time'); ?>
-		<?php echo $form->error($model,'date_time'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->labelEx($model,'status'); ?>
-		<?php echo $form->textField($model,'status'); ?>
+		<?//php echo $form->textField($model,'status'); ?>
+		<?php echo $form->checkBox($model,'status', array('value'=>1, 'uncheckValue'=>0)); ?>
+	
 		<?php echo $form->error($model,'status'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'albums_id'); ?>
-		<?php echo $form->textField($model,'albums_id'); ?>
+		<?php $listemail=CHtml::listData(Albums::model()->findAll(), 'id','name');  
+		  echo $form->dropDownList($model,'albums_id',$listemail, array('empty'=>'--Select an albums--'));
+		?>
 		<?php echo $form->error($model,'albums_id'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'login_id'); ?>
-		<?php echo $form->textField($model,'login_id'); ?>
+		<?//php echo $form->textField($model,'login_id'); ?>
+		<?php $listemail=CHtml::listData(Login::model()->findAll(), 'id','display_name');  
+		  echo $form->dropDownList($model,'login_id',$listemail, array('empty'=>'--Select a User Email--'));
+		?>
+		
 		<?php echo $form->error($model,'login_id'); ?>
 	</div>
 

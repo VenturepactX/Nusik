@@ -33,7 +33,7 @@ class Userlog extends CActiveRecord
 		return array(
 			array('date_time, browser_type, ip_address, login_id', 'required'),
 			array('login_id', 'numerical', 'integerOnly'=>true),
-			array('browser_type', 'length', 'max'=>40),
+			array('browser_type', 'length', 'max'=>200),
 			array('ip_address', 'length', 'max'=>15),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

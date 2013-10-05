@@ -13,14 +13,16 @@
  * @property integer $status
  * @property string $track_album_id
  * @property integer $login_id
+ * @property integer $genre_id
+ * @property string $name
  *
  * The followings are the available model relations:
- * @property GenreHasTrack[] $genreHasTracks
  * @property Like[] $likes0
  * @property Myplaylist[] $myplaylists
  * @property RatingHasTrack[] $ratingHasTracks
  * @property TrackAlbum $trackAlbum
  * @property Login $login
+ * @property Genre $genre
  * @property TrackHasTrackComments[] $trackHasTrackComments
  */
 class Track extends CActiveRecord
@@ -41,13 +43,14 @@ class Track extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('url, length, count, likes, date_time, status, track_album_id, login_id', 'required'),
-			array('length, status, login_id', 'numerical', 'integerOnly'=>true),
+			array('url, length,date_time, status, track_album_id, login_id, genre_id', 'required'),
+			array('length, status, login_id, genre_id', 'numerical', 'integerOnly'=>true),
 			array('url', 'length', 'max'=>50),
 			array('count, likes, track_album_id', 'length', 'max'=>20),
+			array('name', 'length', 'max'=>80),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, url, length, count, likes, date_time, status, track_album_id, login_id', 'safe', 'on'=>'search'),
+			array('id, url, length, count, likes, date_time, status, track_album_id, login_id, genre_id, name', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -59,12 +62,12 @@ class Track extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'genreHasTracks' => array(self::HAS_MANY, 'GenreHasTrack', 'track_id'),
 			'likes0' => array(self::HAS_MANY, 'Like', 'track_id'),
 			'myplaylists' => array(self::MANY_MANY, 'Myplaylist', 'myplaylist_has_track(track_id, myplaylist_id)'),
 			'ratingHasTracks' => array(self::HAS_MANY, 'RatingHasTrack', 'track_id'),
 			'trackAlbum' => array(self::BELONGS_TO, 'TrackAlbum', 'track_album_id'),
 			'login' => array(self::BELONGS_TO, 'Login', 'login_id'),
+			'genre' => array(self::BELONGS_TO, 'Genre', 'genre_id'),
 			'trackHasTrackComments' => array(self::HAS_MANY, 'TrackHasTrackComments', 'track_id'),
 		);
 	}
@@ -84,6 +87,8 @@ class Track extends CActiveRecord
 			'status' => 'Status',
 			'track_album_id' => 'Track Album',
 			'login_id' => 'Login',
+			'genre_id' => 'Genre',
+			'name' => 'Name',
 		);
 	}
 
@@ -114,6 +119,8 @@ class Track extends CActiveRecord
 		$criteria->compare('status',$this->status);
 		$criteria->compare('track_album_id',$this->track_album_id,true);
 		$criteria->compare('login_id',$this->login_id);
+		$criteria->compare('genre_id',$this->genre_id);
+		$criteria->compare('name',$this->name,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

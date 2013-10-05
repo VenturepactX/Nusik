@@ -93,7 +93,21 @@ class SiteController extends Controller
 			$model->attributes=$_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login())
+			{		$browser=$_SERVER['HTTP_USER_AGENT'];
+		$ip=$_SERVER['REMOTE_ADDR'];
+		
+		$log = new Userlog;
+		$log->browser_type=$browser;
+		$log->ip_address=$ip;
+     	$log->date_time=date('Y-m-d H:i');
+		$id=Login::model()->findByAttributes(array('email'=>Yii::app()->user->id));
+	    $log->login_id=$id->id;
+		if($log->save())
 				$this->redirect(Yii::app()->user->returnUrl);
+		else
+		CVarDumper::dump(Yii::app()->user->id,10,1);die;
+		
+		}
 		}
 		// display the login form
 		$this->render('login',array('model'=>$model));
