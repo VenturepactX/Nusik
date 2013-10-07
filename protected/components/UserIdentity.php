@@ -12,7 +12,7 @@ class UserIdentity extends CUserIdentity
 {
 	public $layout='//userlayout/main';
 	public $display_name;
-	/**
+ 	/**
 	
 	 * Authenticates a user.
 	 * The example implementation makes sure if the username and password
@@ -21,8 +21,7 @@ class UserIdentity extends CUserIdentity
 	 * against some persistent user identity storage (e.g. database).
 	 * @return boolean whether authentication succeeds.
 	 */
-	private $id;
-
+ 
 	public function authenticate()
 	{
 		$login=Login::model()->findByAttributes(array('email'=>$this->username));
@@ -32,7 +31,7 @@ class UserIdentity extends CUserIdentity
 			$this->errorCode=self::ERROR_PASSWORD_INVALID;
 		else
 		{
-		$this->id=$login->id;
+		$this->setState('ids',$login->id);
 		$this->setState('dname', $login->display_name);
 	// 	CVarDumper::dump($log,10,1);die;
 			$this->errorCode=self::ERROR_NONE;

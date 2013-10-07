@@ -20,8 +20,8 @@ $gridDataProvider = new CArrayDataProvider(array(
 	  <ul>
 					  <li><span class="summary-icon"><img src="<?php echo $baseUrl ;?>/img/group.png" width="36" height="36" alt="Active Members">
 					</span></li>
-					<li class="stat-count"><span>23,000</span><span>Active User</span></li>
-					<li class="stat-percent"><span class="text-success stat-percent">20%</span></li>
+					<li class="stat-count"><center><span><?php $total = userdetails::model()->count();echo $active=userdetails::model()->findByAttributes(array('status'=>'1'))->count();?></span></center><span>Active User</span></li>
+					<li class="stat-percent"><span class="text-success stat-percent"><?php echo($active/$total)*100;?>%</span></li>
 
 		</ul></div>
   </div>
@@ -30,8 +30,8 @@ $gridDataProvider = new CArrayDataProvider(array(
 		  <ul>
 					  <li><span class="summary-icon"><img src="<?php echo $baseUrl ;?>/img/group.png" width="36" height="36" alt="Active Members">
 					</span></li>
-					<li class="stat-count"><span>23,000</span><span>Deactive User</span></li>
-					<li class="stat-percent"><span class="text-success stat-percent">20%</span></li>
+					<li class="stat-count"><center><span><?php echo($total-$active);?></span></center><span>Deactive User</span></li>
+					<li class="stat-percent"><span class="text-success stat-percent"><?php echo(($total-$active)/$total)*100;?>%</span></li>
 
 		</ul>
 	</div>
@@ -79,7 +79,8 @@ $gridDataProvider = new CArrayDataProvider(array(
 			'titleCssClass'=>''
 		));
 		?>
-		<p>Your last activity:<?php  $mm=null; $mm=Yii::app()->user->getState('date_time'); echo $mm; ?></p> 
+		<?php //CVarDumper::dump($log= userlog::model()->findByAttributes(array('login_id'=>Yii::app()->user->getState('ids')),array('order),10,1);die;?>
+		<p>Your last activity: <?php // $log= userlog::model()->findByAttributes(array('login_id'=>Yii::app()->user->id));  echo $log->date_time;?></p> 
         <?php $this->endWidget(); ?>
 	</div>
 

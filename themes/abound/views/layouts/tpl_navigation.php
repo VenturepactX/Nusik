@@ -61,7 +61,7 @@
 										 array('label'=>'Photo Album Comments','url'=>array('/admin/pAlbumComments', 'view'=>'index'),'visible'=>!Yii::app()->user->isGuest), 
 										 array('label'=>'Track Comments','url'=>array('/admin/trackComments', 'view'=>'index'),'visible'=>!Yii::app()->user->isGuest),
 								)),
-								array('label'=>'Search', 'url'=>array('/site/index'),'visible'=>!Yii::app()->user->isGuest),
+								array('label'=>'CMS', 'url'=>array('/admin/cms'),'visible'=>!Yii::app()->user->isGuest),
 								
 								array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 								array('label'=>'Logout ('.Yii::app()->user->getState('dname').')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
