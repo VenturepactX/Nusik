@@ -31,10 +31,10 @@
 					thumb_links				:	1,			// Individual thumb links for each slide
 					thumbnail_navigation    :   0,			// Thumbnail navigation
 					slides 					:  	[			// Slideshow Images
-														{image : 'C:/xampp/htdocs/nusik/themes/abound/img/slider/3.jpg', title : '', thumb : '', url : ''},
-														{image : 'C:/xampp/htdocs/nusik/themes/abound/img/slider/1 (10).jpg', title : '', thumb : '', url : ''},  
-														{image : 'C:/xampp/htdocs/nusik/themes/abound/img/slider/1 (7).jpg', title : '', thumb : '', url : ''},
-														{image : 'C:/xampp/htdocs/nusik/themes/abound/img/slider/1 (1).jpg', title : '', thumb : '', url : ''}
+														{image : '/nusik/themes/abound/img/slider/3.jpg', title : '', thumb : '', url : ''},
+														{image : '/nusik/themes/abound/img/slider/1 (10).jpg', title : '', thumb : '', url : ''},  
+														{image : '/nusik/themes/abound/img/slider/1 (7).jpg', title : '', thumb : '', url : ''},
+														{image : '/nusik/themes/abound/img/slider/1 (1).jpg', title : '', thumb : '', url : ''}
 												],
 												
 					// Theme Options			   

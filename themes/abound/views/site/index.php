@@ -100,7 +100,7 @@ $gridDataProvider = new CArrayDataProvider(array(
 				array('name'=>'lastName', 'header'=>'Last name'),
 				array('name'=>'language', 'header'=>'Language'),
 				array('name'=>'usage', 'header'=>'Usage', 'type'=>'raw'),
-				
+
 			),
 		)); ?>
 	</div><!--/span-->
