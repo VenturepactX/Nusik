@@ -28,9 +28,39 @@ class SiteController extends Controller
 	 */
 	public function actionIndex()
 	{
-		// renders the view file 'protected/views/site/index.php'
-		// using the default layout 'protected/views/layouts/main.php'
-		$this->render('index');
+		$model=new LoginForm;
+
+		// if it is ajax validation request
+		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
+		{
+			echo CActiveForm::validate($model);
+			Yii::app()->end();
+		}
+
+		// collect user input data
+		if(isset($_POST['LoginForm']))
+		{
+			$model->attributes=$_POST['LoginForm'];
+			// validate user input and redirect to the previous page if valid
+			if($model->validate() && $model->login())
+			{		$browser=$_SERVER['HTTP_USER_AGENT'];
+		$ip=$_SERVER['REMOTE_ADDR'];
+		
+		$log = new Userlog;
+		$log->browser_type=$browser;
+		$log->ip_address=$ip;
+     	$log->date_time=date('Y-m-d H:i');
+		$id=Login::model()->findByAttributes(array('email'=>Yii::app()->user->id));
+	    $log->login_id=$id->id;
+		if($log->save())
+				$this->redirect($this->createUrl('site/profile'));
+		else
+		CVarDumper::dump(Yii::app()->user->id,10,1);die;
+		
+		}
+		}
+					
+		$this->render('index',array('model'=>$model));
 	}
 
 	/**
@@ -120,5 +150,9 @@ class SiteController extends Controller
 	{
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
+	}
+	public function actionProfile()
+	{
+		$this->render('profile');
 	}
 }
