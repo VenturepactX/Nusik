@@ -27,8 +27,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'album_art'); ?>
-		<?php echo $form->textField($model,'album_art',array('size'=>60,'maxlength'=>150)); ?>
+		<?php echo $form->label($model,'image'); ?>
+		<?php echo $form->textField($model,'image',array('size'=>60,'maxlength'=>150)); ?>
 	</div>
 
 	<div class="row">

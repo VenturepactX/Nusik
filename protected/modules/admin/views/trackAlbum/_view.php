@@ -2,6 +2,9 @@
 /* @var $this TrackAlbumController */
 /* @var $data TrackAlbum */
 ?>
+<div>
+
+<div style="float:left; margin-left:60%; width:150px; height:150px;  overflow:hidden; position:absolute; margin-top:1%;  "><?php  echo CHtml::image(ImageFly::Instance()->get($data, 'image', 150, 150));?></div>
 
 <div class="view">
 
@@ -17,8 +20,8 @@
 	<?php echo CHtml::encode($data->album_info); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('album_art')); ?>:</b>
-	<?php echo CHtml::encode($data->album_art); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('image')); ?>:</b>
+	<?php echo CHtml::encode($data->image); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('release_date')); ?>:</b>
@@ -34,4 +37,4 @@
 	<br />
 
 
-</div>
+</div></div>

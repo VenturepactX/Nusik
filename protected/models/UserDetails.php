@@ -15,6 +15,10 @@
  * @property string $gender
  * @property string $image
  * @property integer $status
+ * @property string $passcode
+ * @property string $pass_question
+ * @property string $pass_answer
+ * @property string $pass_mod_date
  * @property integer $login_id
  * @property integer $city_id
  * @property integer $country_id
@@ -29,12 +33,9 @@
  */
 class UserDetails extends CActiveRecord
 {
-    /**
-     * @return string the associated database table name
-     */
-	 
-     
-         public $imagePath = 'profile/';
+	/**
+	 * @return string the associated database table name
+	 */      public $imagePath = 'profile/';
         public $imagePathThumb = 'profile/thumb/';
 
             public function tableName()
@@ -49,111 +50,122 @@ class UserDetails extends CActiveRecord
  
   return parent::beforeSave();
 }
-    /**
-     * @return array validation rules for model attributes.
-     */
-    public function rules()
-    {
-        // NOTE: you should only define rules for those attributes that
-        // will receive user inputs.
-        return array(
-            array('reg_date, mobile, gender, status, login_id, city_id, country_id', 'required'),
-            array('status, login_id, city_id, country_id', 'numerical', 'integerOnly'=>true),
-            array('first_name, last_name, mobile, zip, image', 'length', 'max'=>45),
-            array('gender', 'length', 'max'=>3),
-            array('mod_date, date_of_birth', 'safe'),
-            // The following rule is used by search().
-            // @todo Please remove those attributes that should not be searched.
-            array('id, reg_date, mod_date, first_name, last_name, date_of_birth, mobile, zip, gender, image, status, login_id, city_id, country_id', 'safe', 'on'=>'search'),
-        );
-    }
 
-    /**
-     * @return array relational rules.
-     */
-    public function relations()
-    {
-        // NOTE: you may need to adjust the relation name and the related
-        // class name for the relations automatically generated below.
-        return array(
-            'artDetails' => array(self::HAS_MANY, 'ArtDetails', 'user_details_id'),
-            'myplaylists' => array(self::HAS_MANY, 'Myplaylist', 'user_details_id'),
-            'profileCommentsHasLogins' => array(self::HAS_MANY, 'ProfileCommentsHasLogin', 'user_details_id'),
-            'city' => array(self::BELONGS_TO, 'City', 'city_id'),
-            'country' => array(self::BELONGS_TO, 'Country', 'country_id'),
-            'login' => array(self::BELONGS_TO, 'Login', 'login_id'),
-        );
-    }
+	/**
+	 * @return array validation rules for model attributes.
+	 */
+	public function rules()
+	{
+		// NOTE: you should only define rules for those attributes that
+		// will receive user inputs.
+		return array(
+			array('reg_date, mobile, gender, status, pass_question, pass_answer, login_id, city_id, country_id', 'required'),
+			array('status, login_id, city_id, country_id', 'numerical', 'integerOnly'=>true),
+			array('first_name, last_name, mobile, zip, image, passcode', 'length', 'max'=>45),
+			array('gender', 'length', 'max'=>3),
+			array('pass_question', 'length', 'max'=>150),
+			array('pass_answer', 'length', 'max'=>100),
+			array('mod_date, date_of_birth, pass_mod_date', 'safe'),
+			// The following rule is used by search().
+			// @todo Please remove those attributes that should not be searched.
+			array('id, reg_date, mod_date, first_name, last_name, date_of_birth, mobile, zip, gender, image, status, passcode, pass_question, pass_answer, pass_mod_date, login_id, city_id, country_id', 'safe', 'on'=>'search'),
+		);
+	}
 
-    /**
-     * @return array customized attribute labels (name=>label)
-     */
-    public function attributeLabels()
-    {
-        return array(
-            'id' => 'ID',
-            'reg_date' => 'Reg Date',
-            'mod_date' => 'Mod Date',
-            'first_name' => 'First Name',
-            'last_name' => 'Last Name',
-            'date_of_birth' => 'Date Of Birth',
-            'mobile' => 'Mobile',
-            'zip' => 'Zip',
-            'gender' => 'Gender',
-            'image' => 'Image',
-            'status' => 'Status',
-            'login_id' => 'Login',
-            'city_id' => 'City',
-            'country_id' => 'Country',
-        );
-    }
+	/**
+	 * @return array relational rules.
+	 */
+	public function relations()
+	{
+		// NOTE: you may need to adjust the relation name and the related
+		// class name for the relations automatically generated below.
+		return array(
+			'artDetails' => array(self::HAS_MANY, 'ArtDetails', 'user_details_id'),
+			'myplaylists' => array(self::HAS_MANY, 'Myplaylist', 'user_details_id'),
+			'profileCommentsHasLogins' => array(self::HAS_MANY, 'ProfileCommentsHasLogin', 'user_details_id'),
+			'city' => array(self::BELONGS_TO, 'City', 'city_id'),
+			'country' => array(self::BELONGS_TO, 'Country', 'country_id'),
+			'login' => array(self::BELONGS_TO, 'Login', 'login_id'),
+		);
+	}
 
-    /**
-     * Retrieves a list of models based on the current search/filter conditions.
-     *
-     * Typical usecase:
-     * - Initialize the model fields with values from filter form.
-     * - Execute this method to get CActiveDataProvider instance which will filter
-     * models according to data in model fields.
-     * - Pass data provider to CGridView, CListView or any similar widget.
-     *
-     * @return CActiveDataProvider the data provider that can return the models
-     * based on the search/filter conditions.
-     */
-    public function search()
-    {
-        // @todo Please modify the following code to remove attributes that should not be searched.
+	/**
+	 * @return array customized attribute labels (name=>label)
+	 */
+	public function attributeLabels()
+	{
+		return array(
+			'id' => 'ID',
+			'reg_date' => 'Reg Date',
+			'mod_date' => 'Mod Date',
+			'first_name' => 'First Name',
+			'last_name' => 'Last Name',
+			'date_of_birth' => 'Date Of Birth',
+			'mobile' => 'Mobile',
+			'zip' => 'Zip',
+			'gender' => 'Gender',
+			'image' => 'Image',
+			'status' => 'Status',
+			'passcode' => 'Passcode',
+			'pass_question' => 'Pass Question',
+			'pass_answer' => 'Pass Answer',
+			'pass_mod_date' => 'Pass Mod Date',
+			'login_id' => 'Login',
+			'city_id' => 'City',
+			'country_id' => 'Country',
+		);
+	}
 
-        $criteria=new CDbCriteria;
+	/**
+	 * Retrieves a list of models based on the current search/filter conditions.
+	 *
+	 * Typical usecase:
+	 * - Initialize the model fields with values from filter form.
+	 * - Execute this method to get CActiveDataProvider instance which will filter
+	 * models according to data in model fields.
+	 * - Pass data provider to CGridView, CListView or any similar widget.
+	 *
+	 * @return CActiveDataProvider the data provider that can return the models
+	 * based on the search/filter conditions.
+	 */
+	public function search()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
 
-        $criteria->compare('id',$this->id);
-        $criteria->compare('reg_date',$this->reg_date,true);
-        $criteria->compare('mod_date',$this->mod_date,true);
-        $criteria->compare('first_name',$this->first_name,true);
-        $criteria->compare('last_name',$this->last_name,true);
-        $criteria->compare('date_of_birth',$this->date_of_birth,true);
-        $criteria->compare('mobile',$this->mobile,true);
-        $criteria->compare('zip',$this->zip,true);
-        $criteria->compare('gender',$this->gender,true);
-        $criteria->compare('image',$this->image,true);
-        $criteria->compare('status',$this->status);
-        $criteria->compare('login_id',$this->login_id);
-        $criteria->compare('city_id',$this->city_id);
-        $criteria->compare('country_id',$this->country_id);
+		$criteria=new CDbCriteria;
 
-        return new CActiveDataProvider($this, array(
-            'criteria'=>$criteria,
-        ));
-    }
+		$criteria->compare('id',$this->id);
+		$criteria->compare('reg_date',$this->reg_date,true);
+		$criteria->compare('mod_date',$this->mod_date,true);
+		$criteria->compare('first_name',$this->first_name,true);
+		$criteria->compare('last_name',$this->last_name,true);
+		$criteria->compare('date_of_birth',$this->date_of_birth,true);
+		$criteria->compare('mobile',$this->mobile,true);
+		$criteria->compare('zip',$this->zip,true);
+		$criteria->compare('gender',$this->gender,true);
+		$criteria->compare('image',$this->image,true);
+		$criteria->compare('status',$this->status);
+		$criteria->compare('passcode',$this->passcode,true);
+		$criteria->compare('pass_question',$this->pass_question,true);
+		$criteria->compare('pass_answer',$this->pass_answer,true);
+		$criteria->compare('pass_mod_date',$this->pass_mod_date,true);
+		$criteria->compare('login_id',$this->login_id);
+		$criteria->compare('city_id',$this->city_id);
+		$criteria->compare('country_id',$this->country_id);
 
-    /**
-     * Returns the static model of the specified AR class.
-     * Please note that you should have this exact method in all your CActiveRecord descendants!
-     * @param string $className active record class name.
-     * @return UserDetails the static model class
-     */
-    public static function model($className=__CLASS__)
-    {
-        return parent::model($className);
-    }
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
+
+	/**
+	 * Returns the static model of the specified AR class.
+	 * Please note that you should have this exact method in all your CActiveRecord descendants!
+	 * @param string $className active record class name.
+	 * @return UserDetails the static model class
+	 */
+	public static function model($className=__CLASS__)
+	{
+		return parent::model($className);
+	}
 }

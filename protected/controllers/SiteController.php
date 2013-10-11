@@ -45,13 +45,11 @@ class SiteController extends Controller
 			if($model->validate() && $model->login())
 			{		$browser=$_SERVER['HTTP_USER_AGENT'];
 		$ip=$_SERVER['REMOTE_ADDR'];
-		
 		$log = new Userlog;
 		$log->browser_type=$browser;
 		$log->ip_address=$ip;
      	$log->date_time=date('Y-m-d H:i');
-		$id=Login::model()->findByAttributes(array('email'=>Yii::app()->user->id));
-	    $log->login_id=$id->id;
+	    $log->login_id=Yii::app()->user->id;
 		if($log->save())
 				$this->redirect($this->createUrl('site/profile'));
 		else
@@ -126,6 +124,7 @@ class SiteController extends Controller
 			{		$browser=$_SERVER['HTTP_USER_AGENT'];
 		$ip=$_SERVER['REMOTE_ADDR'];
 		
+
 		$log = new Userlog;
 		$log->browser_type=$browser;
 		$log->ip_address=$ip;
@@ -153,6 +152,17 @@ class SiteController extends Controller
 	}
 	public function actionProfile()
 	{
-		$this->render('profile');
+		$model=new UserDetails;
+		$model=UserDetails::model()->findByAttributes(array('login_id'=>Yii::app()->user->id));
+		$albums=TrackAlbum::model()->findAllByAttributes(array('login_id'=>Yii::app()->user->id));
+	//	CVarDumper::dump(Yii::app()->user->ids,10,1);die;
+		$this->render('profile',array('model'=>$model,'albums'=>$albums));
 	}
+	public function actionAlbum()
+	{
+		$this->render('album');
+	}
+ 
+
+	 
 }

@@ -11,7 +11,7 @@
 class UserIdentity extends CUserIdentity
 {
 	public $layout='//userlayout/main';
-	public $display_name;
+	//public $display_name;
  	/**
 	
 	 * Authenticates a user.
@@ -31,7 +31,7 @@ class UserIdentity extends CUserIdentity
 			$this->errorCode=self::ERROR_PASSWORD_INVALID;
 		else
 		{
-		$this->setState('ids',$login->id);
+		$this->setState('id',$login->id);
 		$this->setState('dname', $login->display_name);
 	// 	CVarDumper::dump($log,10,1);die;
 			$this->errorCode=self::ERROR_NONE;

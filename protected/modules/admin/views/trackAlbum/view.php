@@ -24,7 +24,7 @@ $this->menu=array(
 		'id',
 		'name',
 		'album_info',
-		'album_art',
+		'image',
 		'release_date',
 		'status',
 		'login_id',
