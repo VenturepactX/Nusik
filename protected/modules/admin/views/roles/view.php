@@ -22,9 +22,8 @@ $this->menu=array(
 	'data'=>$model,
 	'attributes'=>array(
 		'id',
-		'type',
+		'roles_type',
 		'status',
-		'visible',
 		'date_time',
 	),
 )); ?>

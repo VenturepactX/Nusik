@@ -5,7 +5,7 @@ class SiteController extends Controller
 	/**
 	 * Declares class-based actions.
 	 */
-	public $layout='//layouts/main';
+	 public $layout='//layouts/main';
 	public function actions()
 	{
 		return array(
@@ -28,37 +28,38 @@ class SiteController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$model=new LoginForm;
-
+		// renders the view file 'protected/views/site/index.php'
+		// using the default layout 'protected/views/layouts/main.php'
+	$model=new LoginForm;
+	$modelUser=new Users;
 		// if it is ajax validation request
-		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
+		if(isset($_POST['ajax']) && ($_POST['ajax']==='login-form'||$_POST['ajax']==='Users'))
 		{
 			echo CActiveForm::validate($model);
+			echo CActiveForm::validate($modelUser);
 			Yii::app()->end();
 		}
 
 		// collect user input data
-		if(isset($_POST['LoginForm']))
+		if(isset($_POST['Users']))
 		{
-			$model->attributes=$_POST['LoginForm'];
-			// validate user input and redirect to the previous page if valid
-			if($model->validate() && $model->login())
-			{		$browser=$_SERVER['HTTP_USER_AGENT'];
-		$ip=$_SERVER['REMOTE_ADDR'];
-		$log = new Userlog;
-		$log->browser_type=$browser;
-		$log->ip_address=$ip;
-     	$log->date_time=date('Y-m-d H:i');
-	    $log->login_id=Yii::app()->user->id;
-		if($log->save())
-				$this->redirect($this->createUrl('site/profile'));
-		else
-		CVarDumper::dump(Yii::app()->user->id,10,1);die;
+			
+			$modelUser->attributes=$_POST['Users'];
+			$modelUser->created_date=date('Y-m-d H:i');
+			$modelUser->roles_id='1';
+			if($modelUser->save())
+				CVarDumper::dump('Sucess',10,1);die;
+ 		}
+// display the login form
+		$this->render('index',array('user'=>$model,'model'=>$modelUser));
 		
-		}
-		}
-					
-		$this->render('index',array('model'=>$model));
+	}
+	public function actionRegistration()
+	{
+		// renders the view file 'protected/views/site/index.php'
+		// using the default layout 'protected/views/layouts/main.php'
+		$model= new Profile;
+		$this->render('registration',array('model'=>$model));
 	}
 
 	/**
@@ -121,22 +122,7 @@ class SiteController extends Controller
 			$model->attributes=$_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
 			if($model->validate() && $model->login())
-			{		$browser=$_SERVER['HTTP_USER_AGENT'];
-		$ip=$_SERVER['REMOTE_ADDR'];
-		
-
-		$log = new Userlog;
-		$log->browser_type=$browser;
-		$log->ip_address=$ip;
-     	$log->date_time=date('Y-m-d H:i');
-		$id=Login::model()->findByAttributes(array('email'=>Yii::app()->user->id));
-	    $log->login_id=$id->id;
-		if($log->save())
 				$this->redirect(Yii::app()->user->returnUrl);
-		else
-		CVarDumper::dump(Yii::app()->user->id,10,1);die;
-		
-		}
 		}
 		// display the login form
 		$this->render('login',array('model'=>$model));
@@ -150,19 +136,4 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
-	public function actionProfile()
-	{
-		$model=new UserDetails;
-		$model=UserDetails::model()->findByAttributes(array('login_id'=>Yii::app()->user->id));
-		$albums=TrackAlbum::model()->findAllByAttributes(array('login_id'=>Yii::app()->user->id));
-	//	CVarDumper::dump(Yii::app()->user->ids,10,1);die;
-		$this->render('profile',array('model'=>$model,'albums'=>$albums));
-	}
-	public function actionAlbum()
-	{
-		$this->render('album');
-	}
- 
-
-	 
 }

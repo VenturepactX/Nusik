@@ -70,7 +70,6 @@ class RolesController extends Controller
 		if(isset($_POST['Roles']))
 		{
 			$model->attributes=$_POST['Roles'];
-			$model->date_time=date('Y-m-d H:i');
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -95,8 +94,6 @@ class RolesController extends Controller
 		if(isset($_POST['Roles']))
 		{
 			$model->attributes=$_POST['Roles'];
-			
-			$model->date_time=date('Y-m-d H:i');
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}

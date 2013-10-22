@@ -5,13 +5,12 @@
  *
  * The followings are the available columns in table 'roles':
  * @property integer $id
- * @property string $type
+ * @property string $roles_name
  * @property integer $status
- * @property integer $visible
  * @property string $date_time
  *
  * The followings are the available model relations:
- * @property Login[] $logins
+ * @property Users[] $users
  */
 class Roles extends CActiveRecord
 {
@@ -31,13 +30,12 @@ class Roles extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('type', 'required'),
-			array('status, visible', 'numerical', 'integerOnly'=>true),
-			array('type', 'length', 'max'=>45),
-			array('date_time', 'safe'),
+			array('roles_name, status, date_time', 'required'),
+			array('status', 'numerical', 'integerOnly'=>true),
+			array('roles_name, date_time', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, type, status, visible, date_time', 'safe', 'on'=>'search'),
+			array('id, roles_name, status, date_time', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -49,7 +47,7 @@ class Roles extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'logins' => array(self::HAS_MANY, 'Login', 'roles_id'),
+			'users' => array(self::HAS_MANY, 'Users', 'roles_id'),
 		);
 	}
 
@@ -60,9 +58,8 @@ class Roles extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'type' => 'Type',
+			'roles_name' => 'Roles Name',
 			'status' => 'Status',
-			'visible' => 'Visible',
 			'date_time' => 'Date Time',
 		);
 	}
@@ -86,9 +83,8 @@ class Roles extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('type',$this->type,true);
+		$criteria->compare('roles_name',$this->roles_name,true);
 		$criteria->compare('status',$this->status);
-		$criteria->compare('visible',$this->visible);
 		$criteria->compare('date_time',$this->date_time,true);
 
 		return new CActiveDataProvider($this, array(

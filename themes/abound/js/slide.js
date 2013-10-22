@@ -31,16 +31,22 @@
 					thumb_links				:	1,			// Individual thumb links for each slide
 					thumbnail_navigation    :   0,			// Thumbnail navigation
 					slides 					:  	[			// Slideshow Images
+														{image : '/nusik/themes/abound/img/slider/1.jpg', title : '', thumb : '', url : ''},
+														{image : '/nusik/themes/abound/img/slider/2.jpg', title : '', thumb : '', url : ''},  
 														{image : '/nusik/themes/abound/img/slider/3.jpg', title : '', thumb : '', url : ''},
-														{image : '/nusik/themes/abound/img/slider/1 (10).jpg', title : '', thumb : '', url : ''},  
-														{image : '/nusik/themes/abound/img/slider/1 (7).jpg', title : '', thumb : '', url : ''},
-														{image : '/nusik/themes/abound/img/slider/1 (1).jpg', title : '', thumb : '', url : ''}
-												],
-												
+														{image : '/nusik/themes/abound/img/slider/4.jpg', title : '', thumb : '', url : ''},
+														
+												],  
+											
 					// Theme Options			   
 					progress_bar			:	1,			// Timer for each slide							
 					mouse_scrub				:	0
 					
 				});
 		    });
+			
+			
 		    
+
+
+

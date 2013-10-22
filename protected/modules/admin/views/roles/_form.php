@@ -20,23 +20,23 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'type'); ?>
-		<?php echo $form->textField($model,'type',array('size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'type'); ?>
+		<?php echo $form->labelEx($model,'roles_type'); ?>
+		<?php echo $form->textField($model,'roles_type',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->error($model,'roles_type'); ?>
 	</div>
 
-<div class="row">
-			<?php echo $form->labelEx($model,'status'); ?>
-			<?php echo $form->checkBox($model,'status', array('value'=>1, 'uncheckValue'=>0)); ?>
-			<?php echo $form->error($model,'status'); ?>
-	</div>
 	<div class="row">
-		<?php echo $form->labelEx($model,'visible'); ?>
-<?php echo $form->checkBox($model,'visible', array('value'=>1, 'uncheckValue'=>0)); ?>
-		<?php echo $form->error($model,'visible'); ?>
+		<?php echo $form->labelEx($model,'status'); ?>
+		<?php echo $form->textField($model,'status'); ?>
+		<?php echo $form->error($model,'status'); ?>
 	</div>
 
-	 
+	<div class="row">
+		<?php echo $form->labelEx($model,'date_time'); ?>
+		<?php echo $form->textField($model,'date_time'); ?>
+		<?php echo $form->error($model,'date_time'); ?>
+	</div>
+
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>

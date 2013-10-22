@@ -1,1 +1,0 @@
-<h1> This is Portal for VPX Outside</h1>
