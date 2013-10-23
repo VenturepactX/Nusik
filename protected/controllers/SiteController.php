@@ -56,10 +56,13 @@ class SiteController extends Controller
 	}
 	public function actionRegistration()
 	{
-		// renders the view file 'protected/views/site/index.php'
-		// using the default layout 'protected/views/layouts/main.php'
-		$model= new Profile;
+ 		$model= new Profile;
 		$this->render('registration',array('model'=>$model));
+	}
+	public function actionProfile()
+	{
+ 		$model= new Profile;
+		$this->render('profile',array('model'=>$model));
 	}
 
 	/**

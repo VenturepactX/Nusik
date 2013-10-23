@@ -30,8 +30,6 @@
 	  $cs->registerCssFile($baseUrl.'/css/supersized.shutter.css');
 	  $cs->registerCssFile($baseUrl.'/css/supersized.css');
 	  $cs->registerCssFile($baseUrl.'/css/layout.css');
- 	  $cs->registerCssFile($baseUrl.'/css/social-buttons.css');
-
 	  
 	  
 	  //$cs->registerCssFile($baseUrl.'/css/style-blue.css');
@@ -58,8 +56,6 @@
       $cs->registerScriptFile($baseUrl.'/js/bootstrap.min.js');
 	  $cs->registerScriptFile($baseUrl.'/js/supersized.3.2.7.min.js');
 	  $cs->registerScriptFile($baseUrl.'/js/supersized.shutter.min.js');
-     if($this->action->Id=='index')
-	  $cs->registerScriptFile($baseUrl.'/js/slide.js');
 	?>
   </head>
 

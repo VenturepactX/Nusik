@@ -45,6 +45,11 @@ background-image:url(../img/home.jpg);
 {
 	color:#333;
 }
+.color-white
+{
+	color:#FFFFFF;
+}
+
 .mgauto
 {
 	margin:auto;}
@@ -73,6 +78,11 @@ background-image:url(../img/home.jpg);
 {
 	margin-left:30px;
 }
+.mgleft40
+{
+	margin-left:40px;
+}
+
 .mgtop350
 {
 	margin-top:350px;}
@@ -83,24 +93,241 @@ background-image:url(../img/home.jpg);
 {
 	padding:20px;
 }
+.padding10
+{
+	padding-left:20px;
+	padding-top:5px;
+}
+
 .txt-align-center
 {
 	text-align:center;
 }
+.icon.icon-map-marker {
+  font-size: 14px;
+  height: 14px;
+  width: 14px;
+}
+.icon.icon-thumbs-up {
+  font-size: 14px;
+  height: 14px;
+  width: 14px;
+}
+.icon.icon-facebook {
+  font-size: 14px;
+   }
+   .icon.icon-facebook-sign {
+  font-size: 14px;
+  height: 14px;
+  width: 14px;
+}
+.icon.icon-twitter {
+  font-size: 14px;
+  height: 14px;
+  width: 14px;
+}
+.font-segoe
+{
+	font-family:"segoe ui";
+}
+.font-segoe14
+{
+	font-family:"segoe ui";
+	font-size:14px;
+}
+.icon.icon-trophy {
+  font-size: 14px;
+  height: 14px;
+  width: 14px;
+  color:#FFFFFF;
+}
+.achievement
+{
+	background:#333333;
+border-radius:5px;
+}
+.bio{
+	width:50%;
+	float:left;
+	background:#333333;
+	border-radius:5px;
+}
+.color-gray{
+color:#CCCCCC;
+}
+.color-blue{
+color:#000066;
+}
+
+.right-sidebar{
+
+height:350px;
+border:double #FFFFFF;
+border-radius:5px;
+overflow:auto;
+}
+.bgcolor-lightgrey
+{
+background:#f1f2e8;
+}
+.tracklisttable
+{
+	padding:10px;
+}
+.color-lightblue
+{
+	color:#2b91d0;
+}
+.table-max-height
+{
+	max-height:200px !important;
+	overflow:auto;
+}
+.bgcolor-black
+{
+	background:#000000;
+}
+.tracklist
+{
+	width:300px;
+	float:left;
+}
+.recent-activities
+{
+	min-width:200px !important;
+	width:30%;
+	float:left;
+	margin-left:10px;
+	}
+table tr td
+{
+	text-align:center;
+}
+.img-width150
+{
+	width:75px;
+	height:70px;
+	float:left;
+}
+.mgleft50{ margin-left:50px;}
+.table-overflow{
+	overflow:auto;
+	overflow-y:scroll;
+	overflow-x:hidden;
+}
+.profile-feeds
+{
+	height:240px;
+	overflow-y:scroll;
+	overflow-x:hidden;	
+
+}
+.follower-list
+{
+	margin-left:60px;
+}
+.mgleft-30
+{
+	margin-left:30px;
+}
+.color-darkblue
+{
+color:#2f87c2;
+}
+.profile-details{
+float:left;
+width:23.5%;
+margin-left:1%;
+}
+.mgright5{margin-right:5px;}
+.mgright-10{margin-right:-10px;}
+.mgright-30{margin-right:-30px;}
 .mgtop-200{margin-top:-200px;}
+.mgtop-10{margin-top:-10px;}
+.mgleft-5{margin-left:-5px;}
+.mgtop-20{margin-top:-20px;}
 .mgtop80{margin-top:80px;}
 .mgtop20{margin-top:20px;}
 .mgtop30{margin-top:30px;}
+.mgtop40{margin-top:40px;}
 .mgtop240{margin-top:50px;}
 .mgtop10{margin-top:10px;}
+.mgtop15{margin-top:15px;}
+.mgtop-1{margin-top:-1px;}
+.mgtop-5{margin-top:-5px;}
+
 .mgleft5{margin-left:5px;}
 .mgleft10{margin-left:10px;}
+.mgleft15{margin-left:15px;}
+.mgleft-10{margin-left:-10px;}
 .mgleft20{margin-left:20px;}
 .mgleft30{margin-left:30px;}
 .mgleft460{margin-left:460px;}
 .mgleft380{margin-left:380px;}
 .mgright10{margin-right:10px;}
 .height170{height:170px;}
+.height300{height:300px; width:350px;}
+.width300{ min-height:100px; min-width:150px; height:270px; width:auto;}
+.box-blue{
+background:#4ebaff;
+width:74px;
+height:38px;
+margin-left:30px;
+padding:15px;
+border-radius:5px;
+float:left;
+font:"Georgia";
+text-align:center;
+}
+.box-grey{
+background:#969696;
+width:74px;
+height:38px;
+margin-left:15px;
+padding:15px;
+border-radius:5px;
+float:left;
+font:"Georgia";
+text-align:center;
+}
+.box-green{
+background:#aad450;
+width:74px;
+height:38px;
+margin-left:15px;
+padding:15px;
+border-radius:5px;
+float:left;
+font:"Georgia";
+text-align:center;
+}
+.box-red{
+background:#f6402d;
+width:74px;
+
+float:left;
+height:38px;
+margin-left:15px;
+padding:15px;
+border-radius:5px;
+font:"Georgia";
+text-align:center;}
+
+
+.box-orange{
+background:#ff8a3c;
+width:74px;
+
+float:left;
+height:38px;
+margin-left:15px;
+padding:15px;
+border-radius:5px;
+font:"Georgia";
+text-align:center;}
+
+
+
 
 .height90
 {
@@ -194,6 +421,26 @@ background-image:url(../img/home.jpg);
 .bgcolor-darkgrey
 {
 	background:#404549;
+}
+.profile-container
+{
+	margin-left:10%;
+	width:80%;
+	height:auto;
+	background:#FFFFFF;
+	border-radius:10px;
+}
+.bgcolor-white
+{
+	background:#ffffff;
+}
+.border-radius10
+{
+	border-radius:10px;
+}
+.name-font
+{
+	font-family:sans-serif;
 }
 .bgcolor-grey
 {
