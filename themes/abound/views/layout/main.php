@@ -30,7 +30,8 @@
 	  $cs->registerCssFile($baseUrl.'/css/supersized.shutter.css');
 	  $cs->registerCssFile($baseUrl.'/css/supersized.css');
 	  $cs->registerCssFile($baseUrl.'/css/layout.css');
-	  
+  	  $cs->registerCssFile($baseUrl.'/css/font.css');
+ 		  
 	  
 	  //$cs->registerCssFile($baseUrl.'/css/style-blue.css');
 	  ?>

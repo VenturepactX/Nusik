@@ -1,6 +1,43 @@
 body
 {
-background-image:url(../img/home.jpg);
+font-family: 'Gotham Book', 'Montserrat', sans-serif;
+
+/*background-image:url(../img/bac.jpg);
+background-repeat:no-repeat;
+background-size:100% 50%;
+background-attachment:fixed;
+*/}
+.heading
+{
+padding: 10px 0 0 0;
+	font-size: 26px;
+	font-weight: 200;
+	font-family:'Gotham Book', 'Montserrat';
+}
+.container-fluid1
+{
+	padding:00px;
+}
+
+
+.small-icon
+{
+	width:15px;
+	height:15px;
+	margin-left:5px;
+}
+.profile-back
+{
+	width:100%;
+	height:100%;
+	
+}
+.mgdiv20
+{
+	border-bottom:#999999;
+	border-bottom-style:inset;
+
+	margin-top:-20px;
 }
 
 
@@ -66,6 +103,10 @@ background-image:url(../img/home.jpg);
 {
 	margin-top:30px;
 }
+.mgtop5
+{
+	margin-top:5px;
+}
 .mgtop50
 {
 	margin-top:50px;
@@ -130,10 +171,15 @@ background-image:url(../img/home.jpg);
 {
 	font-family:"segoe ui";
 }
+li {
+list-style-image:url(../img/songs.jpg);
+}
+
 .font-segoe14
 {
 	font-family:"segoe ui";
-	font-size:14px;
+	font-size:20px;
+	line-height:20px;
 }
 .icon.icon-trophy {
   font-size: 14px;
@@ -166,9 +212,20 @@ border:double #FFFFFF;
 border-radius:5px;
 overflow:auto;
 }
+.update
+{
+	overflow:scroll;
+}
 .bgcolor-lightgrey
 {
 background:#f1f2e8;
+}
+
+.padding-soundline20
+{
+	padding-left:20px;
+	padding-right:20px;
+	padding-bottom:10px;
 }
 .tracklisttable
 {
@@ -192,28 +249,66 @@ background:#f1f2e8;
 	width:300px;
 	float:left;
 }
+p
+{
+margin:00px;}
+.mgleffimp10
+{
+	margin-left:-5px !important;
+}
 .recent-activities
 {
 	min-width:200px !important;
-	width:30%;
+	width:60%;
 	float:left;
 	margin-left:10px;
+	display: none;
 	}
 table tr td
 {
-	text-align:center;
+	text-align:left;
+}
+.img-small
+{
+	width:30%;
+	height:40%;
 }
 .img-width150
 {
-	width:75px;
-	height:70px;
+	width:100%;
+	height:80%;
 	float:left;
 }
+.site-logo
+{
+	
+}
+.div-border1
+{
+	border-bottom:thin #999999;
+	margin-top:10px;
+}
 .mgleft50{ margin-left:50px;}
-.table-overflow{
+.table-overflow
+{
 	overflow:auto;
-	overflow-y:scroll;
+	overflow-y:auto;
+	line-height:20px;
+	max-height:300px !important;
 	overflow-x:hidden;
+}
+.list-overflow
+{
+	overflow:auto;
+	overflow-y:auto;
+	
+	max-height:600px !important;
+	overflow-x:hidden;
+}
+
+.line-height20
+{
+	line-height:30px;
 }
 .profile-feeds
 {
@@ -224,7 +319,7 @@ table tr td
 }
 .follower-list
 {
-	margin-left:60px;
+
 }
 .mgleft-30
 {
@@ -267,64 +362,60 @@ margin-left:1%;
 .mgright10{margin-right:10px;}
 .height170{height:170px;}
 .height300{height:300px; width:350px;}
-.width300{ min-height:100px; min-width:150px; height:270px; width:auto;}
+.width300{height:100%; width:90%;}
 .box-blue{
-background:#4ebaff;
-width:74px;
-height:38px;
+width:auto;
+height:20%;
 margin-left:30px;
-padding:15px;
+padding:5px;
 border-radius:5px;
 float:left;
 font:"Georgia";
 text-align:center;
 }
 .box-grey{
-background:#969696;
-width:74px;
-height:38px;
-margin-left:15px;
-padding:15px;
+width:auto;
+height:20%;
+margin-left:30px;
+padding:5px;
 border-radius:5px;
 float:left;
 font:"Georgia";
 text-align:center;
 }
 .box-green{
-background:#aad450;
-width:74px;
-height:38px;
-margin-left:15px;
-padding:15px;
+width:auto;
+height:20%;
+margin-left:30px;
+padding:5px;
 border-radius:5px;
 float:left;
 font:"Georgia";
 text-align:center;
 }
 .box-red{
-background:#f6402d;
-width:74px;
-
-float:left;
-height:38px;
-margin-left:15px;
-padding:15px;
+/*background:#f6402d;*/
+width:auto;
+height:20%;
+margin-left:30px;
+padding:5px;
 border-radius:5px;
+float:left;
 font:"Georgia";
-text-align:center;}
+text-align:center;
+}
 
 
 .box-orange{
-background:#ff8a3c;
-width:74px;
-
-float:left;
-height:38px;
-margin-left:15px;
-padding:15px;
+width:auto;
+height:20%;
+margin-left:30px;
+padding:5px;
 border-radius:5px;
+float:left;
 font:"Georgia";
-text-align:center;}
+text-align:center;
+}
 
 
 
@@ -418,18 +509,134 @@ text-align:center;}
 {
 	background:#292a2e;
 }
+.bgcolor-light
+{
+	background:#FFFFCC;
+}
+.bgcolor-greys
+{
+	background:#4ebaff;
+
+}
 .bgcolor-darkgrey
 {
 	background:#404549;
 }
+.bio-container
+{
+	height:100%;
+}
+.padding-list5
+{
+	padding-bottom:5px;
+}
+.padding5
+{
+	padding-top:1px;
+}
+.paddingn10
+{
+	padding:20px;
+}
+.img-polaroids {
+background-color: #fff;
+border-bottom:: 1px solid #ccc;
+border-bottom: 1px solid rgba(0,0,0,0.2);
+-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+z-index:-1;
+position:relative;
+
+}
+.mg5
+{
+	margin:5px;
+}
+.mgtop-15
+{
+	margin-top:-15px;
+}
+.img-polaroid10
+{
+  -webkit-box-shadow:rgba(0, 0, 0, 0.0980392) 0 1px 3px;
+  background-color:#FFFFFF;
+  border:2px solid rgba(0, 0, 0, 0.2);
+  border-radius:3px;
+  min-height:50px !important;
+  min-width:50px !important;
+  padding:3px;
+  box-shadow:rgba(0, 0, 0, 0.0980392) 0 1px 3px;
+  
+  
+
+}
+.border-left
+{
+	border-style:dashed;
+	border:#666666;
+	border-left:5px;	
+	height:100%;
+}
+.sides
+{
+	border-bottom:1px;
+	border-style:solid;
+	border-left:none;
+	border-right:none;
+	margin-top:auto;
+	margin-bottom:5px;
+	border-top:#FFFFFF 1px;
+	border-bottom-color:#999999;
+}
+.small-img
+{
+	width:90%;
+	height:80%;
+	padding:2px;
+  -webkit-box-shadow:rgba(0, 0, 0, 0.0980392) 0 1px 1px;
+  background-color:#FFFFFF;
+  border:1px solid rgba(0, 0, 0, 0.2);
+  border-radius:3px;
+  box-shadow:rgba(0, 0, 0, 0.0980392) 0 1px 3px;
+	
+}
+.img-polaroid20 
+{
+  -webkit-box-shadow:rgba(0, 0, 0, 0.0980392) 0 1px 3px;
+  background-color:#FFFFFF;
+  border:2px solid rgba(0, 0, 0, 0.2);
+  border-radius:3px;
+  box-shadow:rgba(0, 0, 0, 0.0980392) 0 1px 3px;
+  padding:10px;
+  padding-bottom:10px;
+  margin-bottom:10px;
+  position:relative;
+  display: block;
+  margin-top:auto;
+ }
+
+.soundlne-container
+{
+ margin:auto;
+ width:85%;
+ height:auto;
+ border-radius:10px;
+ padding-bottom:10px;
+}
 .profile-container
 {
-	margin-left:10%;
-	width:80%;
+	margin:auto;
+	width:85%;
+	margin-top:-70px;
 	height:auto;
 	background:#FFFFFF;
 	border-radius:10px;
+	padding-bottom:20px;
+	
 }
+.mgleft15
+{margin-left:15px;}
 .bgcolor-white
 {
 	background:#ffffff;

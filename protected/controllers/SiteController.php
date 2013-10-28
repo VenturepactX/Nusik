@@ -30,28 +30,25 @@ class SiteController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-	$model=new LoginForm;
-	$modelUser=new Users;
-		// if it is ajax validation request
-		if(isset($_POST['ajax']) && ($_POST['ajax']==='login-form'||$_POST['ajax']==='Users'))
+			$model=new LoginForm;
+			$user=new Users;
+		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
 		{
 			echo CActiveForm::validate($model);
-			echo CActiveForm::validate($modelUser);
 			Yii::app()->end();
 		}
 
 		// collect user input data
-		if(isset($_POST['Users']))
+		if(isset($_POST['LoginForm'])||isset($_POST['Users']))
 		{
-			
-			$modelUser->attributes=$_POST['Users'];
-			$modelUser->created_date=date('Y-m-d H:i');
-			$modelUser->roles_id='1';
-			if($modelUser->save())
-				CVarDumper::dump('Sucess',10,1);die;
- 		}
-// display the login form
-		$this->render('index',array('user'=>$model,'model'=>$modelUser));
+			$model->attributes=$_POST['LoginForm'];
+			// validate user input and redirect to the previous page if valid
+			if($model->validate() && $model->login())
+				$this->redirect(Yii::app()->user->returnUrl);
+		}
+		
+		// display the login form
+		$this->render('index',array('modellogin'=>$model,'model'=>$user));
 		
 	}
 	public function actionRegistration()
@@ -63,6 +60,12 @@ class SiteController extends Controller
 	{
  		$model= new Profile;
 		$this->render('profile',array('model'=>$model));
+	}
+
+	public function actionSearch()
+	{
+ 		$model= new Profile;
+		$this->render('search',array('model'=>$model));
 	}
 
 	/**
@@ -124,8 +127,10 @@ class SiteController extends Controller
 		{
 			$model->attributes=$_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
-			if($model->validate() && $model->login())
+			if($model->validate() && $model->login()){
+				
 				$this->redirect(Yii::app()->user->returnUrl);
+			}
 		}
 		// display the login form
 		$this->render('login',array('model'=>$model));
@@ -138,5 +143,15 @@ class SiteController extends Controller
 	{
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
+	}
+	public function actionSoundline()
+	{
+		$model=new ArtistTrack;
+		$this->render('soundline',array('model'=>$model));
+	}
+	public function actionListener()
+	{
+		$model=new ArtistTrack;
+		$this->render('listener',array('model'=>$model));
 	}
 }
