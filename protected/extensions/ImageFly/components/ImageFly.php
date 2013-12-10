@@ -94,8 +94,8 @@ class ImageFly
         
         if(empty($webRoot) || empty($pathRoot))
         {
-            $this->webRoot = Yii::app()->getBaseUrl(true) . DIRECTORY_SEPARATOR . $file . DIRECTORY_SEPARATOR;
-            $this->pathRoot = Yii::getPathOfAlias("webroot") . DIRECTORY_SEPARATOR . $file. DIRECTORY_SEPARATOR;
+            $this->webRoot = Yii::app()->getBaseUrl(true) . '/' . $file . '/';
+            $this->pathRoot = Yii::getPathOfAlias("webroot") . '/' . $file. '/';
         }
         
         return $this;
@@ -163,7 +163,7 @@ class ImageFly
             $imageName = $model->$attribute;
         
         $filePath = $this->pathRoot . $model->imagePath;
-        $savePath = $this->pathRoot . $model->imagePathThumb . $width . "_" . $height . DIRECTORY_SEPARATOR;
+        $savePath = $this->pathRoot . $model->imagePathThumb . $width . "_" . $height . '/';
         $c = filemtime($filePath . $imageName)."_".$imageName;
         
         if (!file_exists($this->pathRoot . $path . $c)) 
@@ -241,7 +241,7 @@ class ImageFly
      * @return string
      */
     private function getThumbName($model, $width, $height) {
-        return $model->imagePathThumb . $width . '_' . $height . DIRECTORY_SEPARATOR;
+        return $model->imagePathThumb . $width . '_' . $height . '/';
     }
 
     /**
@@ -255,7 +255,7 @@ class ImageFly
     public function getPath($model, $attribute) {
         
         if ($model->$attribute instanceof CUploadedFile) {
-            return "images" . DIRECTORY_SEPARATOR . $model->imagePath . time()  . "." . $model->$attribute->getExtensionName();
+            return "images" . '/' . $model->imagePath . md5($model->$attribute->getName()) . "." . $model->$attribute->getExtensionName();
         }
 
         throw new Exception("$attribute not found.");
@@ -274,7 +274,7 @@ class ImageFly
      * @return string|object
      */
     public static function validCreateFoldersFiles($listfolderName, $create = false, $file = 'files') {
-        $root = Yii::getPathOfAlias('webroot') . DIRECTORY_SEPARATOR . $file . DIRECTORY_SEPARATOR;
+        $root = Yii::getPathOfAlias('webroot') . '/' . $file . '/';
         $errors = array();
 
         foreach ($listfolderName as $folderName) {
@@ -292,13 +292,13 @@ class ImageFly
                         ));
                     }
                     else
-                        $root = $root . $folderName . DIRECTORY_SEPARATOR;
+                        $root = $root . $folderName . '/';
                 }
                 else
-                    $root = $root . $folderName . DIRECTORY_SEPARATOR;
+                    $root = $root . $folderName . '/';
             }
             else
-                $root = $root . $folderName . DIRECTORY_SEPARATOR;
+                $root = $root . $folderName . '/';
         }
 
         if (empty($errors)) {

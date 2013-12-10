@@ -1,100 +1,88 @@
 <?php
 $baseUrl= Yii::app()->theme->baseUrl;
 ?>
-<section class="span12">
-				<div class="row-fluid">
-				<div class="padding-soundline20">
-						
-								<!--shared a song-->
-								<div class="span4 img-polaroid20">	
-											<span class="span12 thumbnail">
-												<img src="<?php echo $baseUrl;?>/img/3.jpg" />
-												<p align="center">Shreya Ghosal</p>
-											</span>
-											<span class="span12"><h5 class="span10">has shared</h5></span>
-											<span class="span12"><h7><b></b></h7><a href=""><img src="<?php echo $baseUrl; ?>/img/play.png"/>Tumko Bhul Na Payege</a>
-											<span class="span12"><img src="<?php echo $baseUrl; ?>/img/genre.png" /><a href=""> Genre Type</a></span>
-											</span>
-											<span class="span6 offset5">
-													<img src="<?php echo $baseUrl;?>/img/likes.png" class="small-icon" title="Like" />
-													<img src="<?php echo $baseUrl;?>/img/share.png" title="span2" class="small-icon"/>
-													<img src="<?php echo $baseUrl;?>/img/share.png" title="span2" class="small-icon"/>
-													<img src="<?php echo $baseUrl;?>/img/down.png" title="span2" class="small-icon"/>
-											</span>
-											<span class="span12"><small class="offset7 mgtop10">10 mins ago</small></span>
-								</div>
-								<!--Following-->
-								<div class="span4 img-polaroid20">	
-											<span class="span12 thumbnail">
-												<img src="<?php echo $baseUrl;?>/img/2.jpg" />
-												<p align="center">Shaan</p>
-											</span>
-											<span class="span12 mgtop10"><h5 class="span6">is following</h5><span class="span6 thumbnail">
-												<img src="<?php echo $baseUrl;?>/img/3.jpg" class="img-small" />
-												<p align="center">Shreya Ghosal</p>
-											</span> </span>
-											
-											<span class="span12"><small class="offset7 mgtop10">40 mins ago</small></span>
-								</div>
-								<!--Shared a song-->
-								<div class="span4 img-polaroid20">	
-											<span class="span12 thumbnail">
-												<img src="<?php echo $baseUrl;?>/img/5.jpg" />
-												<p align="center">Sonu</p>
-											</span>
-												<span class="span12"><h5 class="span6">Shared</h5></span>
-											<span class="span12 mgtop-20"><a href=""><img src="<?php echo $baseUrl; ?>/img/play.png"/>Tum Hi Ho</a>
-											<span class="span12"><img src="<?php echo $baseUrl; ?>/img/mic.png" /><a href="" class="mgleft5">Atif Aslam</a></span>
-											
-											<span class="span12"><img src="<?php echo $baseUrl; ?>/img/genre.png" /><a href=""> Genre Type</a></span>
-											</span>
-											<span class="span12"><small class="offset7 mgtop10">10 mins ago</small></span>
-								</div>
-								<!--Liked an artist-->
-								<div class="span4 img-polaroid20">	
-											<span class="span12 thumbnail">
-												<img src="<?php echo $baseUrl;?>/img/2.jpg" />
-												<p align="center">Shaan</p>
-											</span>
-											<span class="span12 mgtop10"><h5 class="span6">has Liked</h5><span class="span6 thumbnail">
-												<img src="<?php echo $baseUrl;?>/img/3.jpg" class="img-small" />
-												<p align="center">Shreya Ghosal</p>
-											</span> </span>
-											
-											<span class="span12"><small class="offset7 mgtop10">40 mins ago</small></span>
-								</div>	
-								<!--Made a comment-->	
-								<div class="span4 img-polaroid20">	
-											<span class="span12 thumbnail">
-												<img src="<?php echo $baseUrl;?>/img/4.jpg" />
-												<p align="center">Shaan</p>
-											</span>
-											<span class="span12 mgtop10"><p class="span12">Commented on Shreya's song</p>
-												<span class="span12 thumbnail"><p align="center"> Great Share!!</p></span>
-											</span>			
-											<span class="span6 offset5">
-												<span class="span12 offset10">
-													<img src="<?php echo $baseUrl;?>/img/share.png" class="small-icon" title="Like" />
-												</span>	
-											</span>							
-											<span class="span12"><small class="offset7">40 mins ago</small></span>
-								</div>	
-								<!--Liked a song-->
-								<div class="span4 img-polaroid20">	
-											<span class="span12 thumbnail">
-												<img src="<?php echo $baseUrl;?>/img/5.jpg" />
-												<p align="center">Sonu</p>
-											</span>
-												<span class="span12"><h5 class="span6">Liked</h5></span>
-											<span class="span12 mgtop-20"><a href=""><img src="<?php echo $baseUrl; ?>/img/play.png"/>Tum Hi Ho</a>
-											<span class="span12"><img src="<?php echo $baseUrl; ?>/img/mic.png" /><a href="" class="mgleft5">Atif Aslam</a></span>
-											
-											<span class="span12"><img src="<?php echo $baseUrl; ?>/img/genre.png" /><a href=""> Genre Type</a></span>
-											</span>
-											<span class="span12"><small class="offset7 mgtop10">10 mins ago</small></span>
-								</div>
-								
-												
-						</div>
+
+<style>
+input[type='text']{height:40px; border:none; padding:none; box-shadow:none; font-size:17px; font-weight:inherit;}
+input[type='submit']{height:40px;}
+</style>
+
+<?php // CVarDumper::dump($model,10,1);die;?>
+
+
+<section class="container-fluid">
+	<section class="span11 offset1 border-radius10 padding-bottom10 bgcolor-white">
+		
+				<aside class="span2">
+					<div class="mgleft-40">
+					 <h3 class=""> Search </h3>
+			   <ul class="nav nav-list span2 dropdown pull-left" style="width:100px;" id="">
+				  <li class="active"><a href="#" class="">All Results</a></li>
+				  <li><a href="#">By Genre</a></li>
+				  <li><a href="#">By Location</a></li>
+				</ul>
+ 					</div>
+				</aside>
+				<div id="search" class="span6 search-text mgtop20">
+				<?php 
+					
+					 $form=$this->beginWidget('CActiveForm', array(
+				'id'=>'search',
+				'action'=>$this->createUrl('site/search'),
+				'htmlOptions'=>array('enctype'=>'multipart/form-data'),
+				// Please note: When you enable ajax validation, make sure the corresponding
+				// controller action is handling ajax validation correctly.
+				// There is a call to performAjaxValidation() commented in generated controller code.
+				// See class documentation of CActiveForm for details on this.
+				'enableAjaxValidation'=>false,
+			 ));
+					 echo CHtml::textField('search','',array('class'=>'span5','text'=>$search,'placeholder'=>$search));
+					 
+					 $src=$baseUrl.'/img/search2.png';
+					echo CHtml::imageButton($src, array('class'=>'mgtop-5 mgleft10'));
+			?>
+					
+					<?php $this->endWidget(); ?>
+			
 				</div>
-	  	</section>
+				<h5 class="span8">Showing  <?//php echo count($model);?> results for "<a href=""><small><?php echo $search;?></small></a>"</h5>
+				<?php //CVarDumper::dump($model[0]->,10,1);die;?>
+				<div class="span7">
+					<?php 
+					foreach($model as $result)
+						{
+						?>					
+					<div class="row-fluid border-bottom-lightgrey ">
+				
+					<div class="span2 mgtop5">
+						<a href="<?php echo $this->createUrl('site/profile',array('id'=>$result->users->id));?>">
+					  <img src="<?php echo (!$result->image=='')?ImageFly::Instance()->get($result, 'image', 150, 150):$baseUrl.'/img/profile-placeholder.jpg';?>" class="img-polaroid10 mg5" /></a>
+					</div>
+					<section id="search-result">	
+						<div class="span7">
+						<span class="span6"><h4 class="padding10 mgtop5 mgleft-5"><a href="<?php echo $this->createUrl('site/profile',array('id'=>$result->users->id));?>"><?php echo $result->users->display_name;?></a></h4></span>
+						<p class="span10 mgtop-5 color-lightblue "><img src="<?php echo $baseUrl;?>/img/place.png" class="small-icon mgright5"/>
+						<?php //CVarDumper::dump($result->profile->countries->name,10,1);die;
+						$city=(isset($result->cities->name)?$result->cities->name:'');
+						$country=(isset($result->countries->name)?$result->countries->name:'');
+						?>
+						<?php echo $city.','.$country;?></p>
+						<p class="span10 mgtop-5  color-lightblue "><img src="<?php echo $baseUrl;?>/img/genre.png" class="small-icon mgright5"/><?php echo $result->users->profiles[0]->artistsProfiles[0]->geners->name;?></p> 
+						<p class="span10 mgtop-5 color-lightblue "><img src="<?php echo $baseUrl;?>/img/suggesstion.png" class="small-icon mgright5"/>
+							<span class="mgtop10"><?php echo $result->users->profiles[0]->artistsProfiles[0]->total_share;?></span> 
+							<span class="color-black">|</span><img src="<?php echo $baseUrl;?>/img/heart.png" class="small-icon mgright5"/><span class="mgtop10"><?php echo $result->users->profiles[0]->artistsProfiles[0]->total_likes;?></span>
+							<span class=" color-black">|</span><img src="<?php echo $baseUrl;?>/img/note.png" class="small-icon mgright5"/><span class="mgtop10"><?php echo $result->users->profiles[0]->artistsProfiles[0]->total_songs;?></span> 
+						</p>
+					</div>
+						<div class="span2">
+							<span class="span12 mgtop20"> 	<?php echo CHtml::ajaxLink( $label = 'Follow', $url =$this->createUrl("site/like",array('uid'=>$result->users->profiles[0]->id,'type'=>'follow')), $ajaxOptions=array('dataType'=>'json', 'success'=>'function(html){ jQuery("#suggest-list").hide; }' ), $htmlOptions=array('class'=>'btn large') );?> </span>
+							<span class="span12 mgtop20"> 	<?php echo CHtml::ajaxLink( $label = 'Like', $url =$this->createUrl("site/like",array('uid'=>$result->users->profiles[0]->id,'type'=>'like')), $ajaxOptions=array('dataType'=>'json', 'success'=>'function(html){ jQuery("this").hide; }' ), $htmlOptions=array('class'=>'btn large') );?> </span>
+						</div>
+					</section>
+					</div>
+					
+					<?php }?>
+					
+				</div>
+	</section>	
+</section>

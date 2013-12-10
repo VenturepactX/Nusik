@@ -30,8 +30,8 @@ class Roles extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('roles_name, status, date_time', 'required'),
-			array('status', 'numerical', 'integerOnly'=>true),
+			array('id, roles_name, status, date_time', 'required'),
+			array('id, status', 'numerical', 'integerOnly'=>true),
 			array('roles_name, date_time', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

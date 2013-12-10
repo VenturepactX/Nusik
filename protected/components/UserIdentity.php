@@ -15,7 +15,7 @@ class UserIdentity extends CUserIdentity
 	 * against some persistent user identity storage (e.g. database).
 	 * @return boolean whether authentication succeeds.
 	 */
-	public function authenticate()
+	/*public function authenticate()
 	{
 	$login=Users::model()->findByAttributes(array('email'=>$this->username));
 	   if(!$login)
@@ -34,5 +34,35 @@ class UserIdentity extends CUserIdentity
 		return !$this->errorCode;
 				 
  	       
+	}*/
+	private $id;
+	public $username;
+	public $email;
+	public $role;
+	public function authenticate()
+	{
+		$record=Users::model()->findByAttributes(array('email'=>$this->username));
+	 	if($record==null)
+		{
+		$this->errorCode=self::ERROR_USERNAME_INVALID;
+		}
+		else if($record->password!=$this->password)
+		{
+		$this->errorCode=self::ERROR_PASSWORD_INVALID;
+		}
+		else
+		{
+		$this->email=$record->email;
+		$this->role= $record->roles_id;
+		$this->setState('dname',$record->display_name);		
+		$this->setState('role', $record->roles_id);
+		$this->setState('id', $record->id);
+		if($profile=Profile::model()->findByAttributes(array('users_id'=>$record->id)))
+		$this->setState('cover',$profile->cover_photo);
+		$this->errorCode=self::ERROR_NONE;
+		
+		}
+	 return !$this->errorCode;
 	}
+	
 }

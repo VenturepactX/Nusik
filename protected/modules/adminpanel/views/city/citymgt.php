@@ -26,7 +26,7 @@ function saverecord()
 			beforeSend:function()
 			{
 			$("#ld").html('');
-			$("#ld").html('<img src="images/loading.gif">');
+			$("#ld").html('<img src="images/loading1.gif">');
 			},
 			success:function(response)
 			{
@@ -39,9 +39,9 @@ function saverecord()
 </script>
 <?php $form=$this->beginWidget('CActiveForm', array('id'=>'frm', 'enableAjaxValidation'=>true,)); ?>
 <?php
- echo CHtml::link('Country Management',array('siteadmin/country'),array('class'=>'btn btn-primary')); ?>&nbsp;&nbsp;
-<?php echo CHtml::link('City Management',array('siteadmin/city'),array('class'=>'btn btn-primary')); ?>&nbsp;&nbsp;
-<?php echo CHtml::link('Genere Management',array('genre/genremgt'),array('class'=>'btn btn-primary')); ?>&nbsp;&nbsp;<div id="ld" style="position:relative;top:20;"></div><br><br>
+ echo CHtml::link('Country Management',array('siteadmin/country'),array('class'=>'btn btn-success')); ?>&nbsp;&nbsp;
+<?php echo CHtml::link('City Management',array('siteadmin/city'),array('class'=>'btn btn-info')); ?>&nbsp;&nbsp;
+<?php echo CHtml::link('Genere Management',array('genre/genremgt'),array('class'=>'btn btn-white')); ?>&nbsp;&nbsp;<div id="ld" style="position:relative;top:20;"></div><br><br>
 <h3>City Management</h3>
 <br>
 <?php echo CHtml::dropDownList('country','',array(),array('id'=>'country')); ?>&nbsp;&nbsp;
@@ -64,8 +64,8 @@ $this->widget('zii.widgets.grid.CGridView', array(
 		array( 
 			'class'=>'CButtonColumn',
 			'template'=>'{update}{delete}',
-		        'updateButtonUrl'=>'Yii::app()->createUrl("/adminpanel/city/update", array("id"=>$data->primaryKey))',
-			'deleteButtonUrl'=>'Yii::app()->createUrl("/adminpanel/city/delete", array("id"=>$data->primaryKey))',
+		        'updateButtonUrl'=>'Yii::app()->createUrl("/adminpanel/city/cityupdate", array("id"=>$data->primaryKey))',
+			'deleteButtonUrl'=>'Yii::app()->createUrl("/adminpanel/siteadmin/deletecity", array("id"=>$data->primaryKey))',
 		),
 		),
 		

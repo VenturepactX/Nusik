@@ -5,16 +5,14 @@
  *
  * The followings are the available columns in table 'comments':
  * @property integer $id
- * @property integer $users_id
- * @property integer $artists_profile_id
  * @property string $comment_text
  * @property string $comment_date_time
  * @property integer $status
  * @property string $add_date
  *
  * The followings are the available model relations:
- * @property Users $users
- * @property ArtistsProfile $artistsProfile
+ * @property ArtistTrack[] $artistTracks
+ * @property Profile[] $profiles
  * @property ReportHasComments[] $reportHasComments
  */
 class Comments extends CActiveRecord
@@ -35,12 +33,12 @@ class Comments extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('users_id, artists_profile_id, comment_text, add_date', 'required'),
-			array('users_id, artists_profile_id, status', 'numerical', 'integerOnly'=>true),
+			array('comment_text, add_date', 'required'),
+			array('status', 'numerical', 'integerOnly'=>true),
 			array('comment_date_time', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, users_id, artists_profile_id, comment_text, comment_date_time, status, add_date', 'safe', 'on'=>'search'),
+			array('id, comment_text, comment_date_time, status, add_date', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -52,8 +50,8 @@ class Comments extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'users' => array(self::BELONGS_TO, 'Users', 'users_id'),
-			'artistsProfile' => array(self::BELONGS_TO, 'ArtistsProfile', 'artists_profile_id'),
+			'artistTracks' => array(self::MANY_MANY, 'ArtistTrack', 'artist_track_has_comments(comments_id, artist_track_id)'),
+			'profiles' => array(self::MANY_MANY, 'Profile', 'profile_has_comments(comments_id, profile_id)'),
 			'reportHasComments' => array(self::HAS_MANY, 'ReportHasComments', 'comments_id'),
 		);
 	}
@@ -65,8 +63,6 @@ class Comments extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'users_id' => 'Users',
-			'artists_profile_id' => 'Artists Profile',
 			'comment_text' => 'Comment Text',
 			'comment_date_time' => 'Comment Date Time',
 			'status' => 'Status',
@@ -93,8 +89,6 @@ class Comments extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('users_id',$this->users_id);
-		$criteria->compare('artists_profile_id',$this->artists_profile_id);
 		$criteria->compare('comment_text',$this->comment_text,true);
 		$criteria->compare('comment_date_time',$this->comment_date_time,true);
 		$criteria->compare('status',$this->status);

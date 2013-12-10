@@ -14,8 +14,7 @@
  *
  * The followings are the available model relations:
  * @property ArtistTrack[] $artistTracks
- * @property ArtistsLike[] $artistsLikes
- * @property Comments[] $comments
+ * @property ArtistsProfile[] $artistsProfiles
  * @property Events[] $events
  * @property Follower[] $followers
  * @property Profile[] $profiles
@@ -23,7 +22,6 @@
  * @property ReportHasComments[] $reportHasComments
  * @property ReportHasProfile[] $reportHasProfiles
  * @property Sharing[] $sharings
- * @property Sitefeed[] $sitefeeds
  * @property SongsLike[] $songsLikes
  * @property Roles $roles
  * @property UsersPlaylist[] $usersPlaylists
@@ -48,8 +46,7 @@ class Users extends CActiveRecord
 		return array(
 			array('display_name, roles_id, email, password, created_date', 'required'),
 			array('roles_id, status', 'numerical', 'integerOnly'=>true),
-			array('display_name', 'length', 'max'=>25),
-			array('email, password', 'length', 'max'=>45),
+			array('display_name, email, password', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, display_name, roles_id, email, password, created_date, status', 'safe', 'on'=>'search'),
@@ -65,8 +62,7 @@ class Users extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'artistTracks' => array(self::HAS_MANY, 'ArtistTrack', 'users_id'),
-			'artistsLikes' => array(self::HAS_MANY, 'ArtistsLike', 'users_id'),
-			'comments' => array(self::HAS_MANY, 'Comments', 'users_id'),
+			'artistsProfiles' => array(self::MANY_MANY, 'ArtistsProfile', 'artists_profile_has_users(users_id, artists_profile_id)'),
 			'events' => array(self::HAS_MANY, 'Events', 'users_id'),
 			'followers' => array(self::HAS_MANY, 'Follower', 'users_id'),
 			'profiles' => array(self::HAS_MANY, 'Profile', 'users_id'),
@@ -74,7 +70,6 @@ class Users extends CActiveRecord
 			'reportHasComments' => array(self::HAS_MANY, 'ReportHasComments', 'users_id'),
 			'reportHasProfiles' => array(self::HAS_MANY, 'ReportHasProfile', 'users_id'),
 			'sharings' => array(self::HAS_MANY, 'Sharing', 'users_id'),
-			'sitefeeds' => array(self::HAS_MANY, 'Sitefeed', 'users_id'),
 			'songsLikes' => array(self::HAS_MANY, 'SongsLike', 'users_id'),
 			'roles' => array(self::BELONGS_TO, 'Roles', 'roles_id'),
 			'usersPlaylists' => array(self::HAS_MANY, 'UsersPlaylist', 'users_id'),

@@ -23,20 +23,53 @@ class CityController extends controller
 		   echo "Record Added Success Fully";
 		 }
 	}
-	public function actionDelete($id)
+		public function loadModel($id)
 	{
-	$model=Cities::model()->findByPk($id)->delete();
-	if(!isset($_GET['ajax']))
-	$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		$model=Cities::model()->findByPk($id);
+		if($model===null)
+			throw new CHttpException(404,'The requested page does not exist.');
+		return $model;
 	}
+	public function actionCityupdate($id)
+	{
+	//$country_id=$_POST['country'];
+	//$cityname=$_POST['cityname'];
+	$model=$this->loadModel($id);
+		//CVarDumper::dump($model->attributes,10,1);die;
+
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
+		if(isset($_POST['Cities']))
+		{
+			$model->attributes=$_POST['Cities'];
+			if($model->save())
+				$this->redirect(array('citymgt','id'=>$model->id));
+		}
+		$this->render('createcity',array(
+			'model'=>$model,
+		));
+	}
+	
+	//hear search the city through the ajax.........
 	public function actionLoadcountry()
 	{
 	$criteria = new CDbCriteria;
 	$criteria->order = 'name';
 	$model=Countries::model()->findAll($criteria);
-		foreach($model as $m)
+		foreach($model as $m1)
 		{
-		echo "<option value='".$m->id."'>".$m->name."</option>";
+		echo "<option value='".$m1->id."'>".$m1->name."</option>";
 		}
 	}
+		public function actionLoadcityname()
+		{
+	$criteria=new CDCriteria;
+	$model=City::model()->findAll($criteria);
+	foreach($model as $m1)
+	{
+	echo "<option value='".$m1->id."'>".$m1->name."</option>";
+	}
+		}
+		
 }

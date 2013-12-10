@@ -7,9 +7,6 @@
  * @property integer $id
  * @property integer $country_id
  * @property string $name
- * @property string $country_code
- * @property string $district
- * @property integer $population
  *
  * The followings are the available model relations:
  * @property Countries $country
@@ -34,13 +31,11 @@ class Cities extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('country_id', 'required'),
-			array('country_id, population', 'numerical', 'integerOnly'=>true),
+			array('country_id', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>35),
-			array('country_code', 'length', 'max'=>3),
-			array('district', 'length', 'max'=>20),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, country_id, name, country_code, district, population', 'safe', 'on'=>'search'),
+			array('id, country_id, name', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -66,9 +61,6 @@ class Cities extends CActiveRecord
 			'id' => 'ID',
 			'country_id' => 'Country',
 			'name' => 'Name',
-			'country_code' => 'Country Code',
-			'district' => 'District',
-			'population' => 'Population',
 		);
 	}
 
@@ -93,9 +85,6 @@ class Cities extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('country_id',$this->country_id);
 		$criteria->compare('name',$this->name,true);
-		$criteria->compare('country_code',$this->country_code,true);
-		$criteria->compare('district',$this->district,true);
-		$criteria->compare('population',$this->population);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

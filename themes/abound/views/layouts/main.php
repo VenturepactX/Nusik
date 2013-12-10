@@ -20,7 +20,6 @@
 	?>
     <!-- Fav and Touch and touch icons -->
     <link rel="shortcut icon" href="<?php echo $baseUrl;?>/img/icons/favicon.ico">
-	<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo $baseUrl;?>/img/icons/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo $baseUrl;?>/img/icons/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="<?php echo $baseUrl;?>/img/icons/apple-touch-icon-57-precomposed.png">
@@ -28,57 +27,32 @@
 	  $cs->registerCssFile($baseUrl.'/css/bootstrap.min.css');
 	  $cs->registerCssFile($baseUrl.'/css/bootstrap-responsive.min.css');
 	  $cs->registerCssFile($baseUrl.'/css/abound.css');
-	  $cs->registerCssFile($baseUrl.'/css/supersized.shutter.css');
-	  $cs->registerCssFile($baseUrl.'/css/supersized.css');
-	  $cs->registerCssFile($baseUrl.'/css/layout.css');
- 	  $cs->registerCssFile($baseUrl.'/css/social-buttons.css');
-
-	  
-	  
 	  //$cs->registerCssFile($baseUrl.'/css/style-blue.css');
 	  ?>
       <!-- styles for style switcher -->
-      	<link rel="stylesheet" type="text/css" href="<?php echo $baseUrl;?>/css/style-blue.css" />
         <link rel="alternate stylesheet" type="text/css" media="screen" title="style2" href="<?php echo $baseUrl;?>/css/style-brown.css" />
-        <link rel="alternate stylesheet" type="text/css" media="screen" title="style3" href="<?php echo $baseUrl;?>/css/style-green.css" />
-        <link rel="alternate stylesheet" type="text/css" media="screen" title="style4" href="<?php echo $baseUrl;?>/css/style-grey.css" />
-        <link rel="alternate stylesheet" type="text/css" media="screen" title="style5" href="<?php echo $baseUrl;?>/css/style-orange.css" />
-        <link rel="alternate stylesheet" type="text/css" media="screen" title="style6" href="<?php echo $baseUrl;?>/css/style-purple.css" />
-        <link rel="alternate stylesheet" type="text/css" media="screen" title="style7" href="<?php echo $baseUrl;?>/css/style-red.css" />
+        
 	  <?php
 	  $cs->registerScriptFile($baseUrl.'/js/bootstrap.min.js');
-	  $cs->registerScriptFile($baseUrl.'/js/plugins/jquery.sparkline.js');
-	  $cs->registerScriptFile($baseUrl.'/js/plugins/jquery.flot.min.js');
-	  $cs->registerScriptFile($baseUrl.'/js/plugins/jquery.flot.pie.min.js');
-	  $cs->registerScriptFile($baseUrl.'/js/charts.js');
-	  $cs->registerScriptFile($baseUrl.'/js/plugins/jquery.knob.js');
-	  $cs->registerScriptFile($baseUrl.'/js/plugins/jquery.masonry.min.js');
-	  $cs->registerScriptFile($baseUrl.'/js/styleswitcher.js');
-	  $cs->registerScriptFile($baseUrl.'/js/jquery.js');
-      $cs->registerScriptFile($baseUrl.'/js/jquery.easing.min.js');
-      $cs->registerScriptFile($baseUrl.'/js/bootstrap.min.js');
-	  $cs->registerScriptFile($baseUrl.'/js/supersized.3.2.7.min.js');
-	  $cs->registerScriptFile($baseUrl.'/js/supersized.shutter.min.js');
-     if($this->action->Id=='index')
-	  $cs->registerScriptFile($baseUrl.'/js/slide.js');
 	?>
   </head>
 
 <body>
 
-<section class="main-body">
+<section id="navigation-main">   
+<!-- Require the navigation -->
+<?php require_once('tpl_navigation.php')?>
+</section><!-- /#navigation-main -->
     
- <?php if($this->action->Id=='index')
-   	echo '<div class="container-fluid">';
-	 else
-	 echo '<div class="container-fluid1">';
-	 ?>
-	        <!-- Include content pages -->
+<section class="main-body">
+    <div class="container-fluid">
+            <!-- Include content pages -->
             <?php echo $content; ?>
     </div>
 </section>
 
 <!-- Require the footer -->
+<?php require_once('tpl_footer.php')?>
 
   </body>
 </html>

@@ -6,9 +6,9 @@
  * The followings are the available columns in table 'artists_like':
  * @property integer $id
  * @property integer $users_id
- * @property integer $stats
- * @property string $date_time
  * @property integer $artists_profile_id
+ * @property integer $status
+ * @property string $date_time
  *
  * The followings are the available model relations:
  * @property ArtistsProfile $artistsProfile
@@ -32,12 +32,11 @@ class ArtistsLike extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, users_id, stats, date_time, artists_profile_id', 'required'),
-			array('id, users_id, stats, artists_profile_id', 'numerical', 'integerOnly'=>true),
-			array('date_time', 'length', 'max'=>45),
+			array('id, users_id, artists_profile_id, date_time', 'required'),
+			array('id, users_id, artists_profile_id, status', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, users_id, stats, date_time, artists_profile_id', 'safe', 'on'=>'search'),
+			array('id, users_id, artists_profile_id, status, date_time', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -62,9 +61,9 @@ class ArtistsLike extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'users_id' => 'Users',
-			'stats' => 'Stats',
-			'date_time' => 'Date Time',
 			'artists_profile_id' => 'Artists Profile',
+			'status' => 'Status',
+			'date_time' => 'Date Time',
 		);
 	}
 
@@ -88,9 +87,9 @@ class ArtistsLike extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('users_id',$this->users_id);
-		$criteria->compare('stats',$this->stats);
-		$criteria->compare('date_time',$this->date_time,true);
 		$criteria->compare('artists_profile_id',$this->artists_profile_id);
+		$criteria->compare('status',$this->status);
+		$criteria->compare('date_time',$this->date_time,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

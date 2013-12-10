@@ -25,7 +25,6 @@ $('.search-form form').submit(function(){
 <?php $form=$this->beginWidget('CActiveForm', array(
     'enableAjaxValidation'=>true,
 )); ?>
-<?php echo CHtml::link('Add New User',array('siteadmin/createuser'),array('class'=>'btn btn-danger')); ?>
 <?php 
 $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'user-grid',
@@ -39,11 +38,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
 			 'selectableRows' => '2', 
                  	),
 		'id',
-		  /*array(
-				'name'=>'name',
-				'value'=>'CHtml::link($data->name, Yii::app()->createUrl("site/userview",array("id"=>$data->primaryKey)))',
-				'type'=>'raw',
-				),*/
+	
 		'email',
 		array(
 				'name'=>'roles_id',
@@ -74,7 +69,15 @@ function reloadGrid()
  $.fn.yiiGridView.update('user-grid');
 }
 </script>
-<?php echo CHtml::ajaxSubmitButton('Activate',array('siteadmin/ajaxupdate','act'=>'doActive'),array('success'=>'reloadGrid'),array('class'=>'btn btn-danger')); ?>&nbsp;&nbsp;
+<?php echo CHtml::ajaxSubmitButton('Activate',array('siteadmin/ajaxupdate','act'=>'doActive'),array('success'=>'reloadGrid'),array('class'=>'btn btn-success')); ?>&nbsp;&nbsp;
+
 <?php echo CHtml::ajaxSubmitButton('In Activate',array('siteadmin/ajaxupdate','act'=>'doInactive'),array('success'=>'reloadGrid'),array('class'=>'btn btn-danger')); ?>&nbsp;&nbsp;
+
+<?php echo CHtml::link('Add User',array('siteadmin/createuser'),array('class'=>'btn btn-white')); ?>
+
+
+
+<?php echo CHtml::link('Profile',array('siteadmin/profileview'),array('class'=>'btn btn-success')); ?>
+
 
 <?php $this->endWidget(); ?>

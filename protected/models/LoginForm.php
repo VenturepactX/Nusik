@@ -23,6 +23,11 @@ class LoginForm extends CFormModel
 		return array(
 			// username and password are required
 			array('username, password', 'required'),
+			     array('username', 'email','message'=>"The email isn't correct"), 
+			//array('password','ext.SPasswordValidator.SPasswordValidator'),
+			array('password','length','max'=>64, 'min'=>6),
+		//	 array('username', 'username','message'=>"The email isn't correct"),
+			   //array('email', 'unique','message'=>'Email already exists!'),        
 			// rememberMe needs to be a boolean
 			array('rememberMe', 'boolean'),
 			// password needs to be authenticated

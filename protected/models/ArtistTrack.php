@@ -5,19 +5,24 @@
  *
  * The followings are the available columns in table 'artist_track':
  * @property integer $id
+ * @property integer $users_id
  * @property string $song_name
  * @property string $song_url
  * @property string $uploaded_date
  * @property string $song_discription
- * @property integer $users_id
+ * @property integer $total_likes
+ * @property integer $total_comments
+ * @property integer $total_shares
  * @property integer $status
  * @property string $date_time
  *
  * The followings are the available model relations:
  * @property Users $users
- * @property PlaylistTrack[] $playlistTracks
+ * @property Comments[] $comments
+ * @property ReportHasArtistTrack[] $reportHasArtistTracks
  * @property Sharing[] $sharings
  * @property SongsLike[] $songsLikes
+ * @property UsersPlaylistHasArtistTrack[] $usersPlaylistHasArtistTracks
  */
 class ArtistTrack extends CActiveRecord
 {
@@ -37,14 +42,12 @@ class ArtistTrack extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('users_id, status, date_time', 'required'),
-			array('users_id, status', 'numerical', 'integerOnly'=>true),
+			array('users_id, song_name, song_url, uploaded_date, song_discription, date_time', 'required'),
+			array('users_id, total_likes, total_comments, total_shares, status', 'numerical', 'integerOnly'=>true),
 			array('song_name, song_url', 'length', 'max'=>45),
-			array('song_discription', 'length', 'max'=>50),
-			array('uploaded_date', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, song_name, song_url, uploaded_date, song_discription, users_id, status, date_time', 'safe', 'on'=>'search'),
+			array('id, users_id, song_name, song_url, uploaded_date, song_discription, total_likes, total_comments, total_shares, status, date_time', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -57,9 +60,11 @@ class ArtistTrack extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'users' => array(self::BELONGS_TO, 'Users', 'users_id'),
-			'playlistTracks' => array(self::HAS_MANY, 'PlaylistTrack', 'songs_table_id'),
+			'comments' => array(self::MANY_MANY, 'Comments', 'artist_track_has_comments(artist_track_id, comments_id)'),
+			'reportHasArtistTracks' => array(self::HAS_MANY, 'ReportHasArtistTrack', 'artist_track_id'),
 			'sharings' => array(self::HAS_MANY, 'Sharing', 'artist_track_id'),
 			'songsLikes' => array(self::HAS_MANY, 'SongsLike', 'artist_track_id'),
+			'usersPlaylistHasArtistTracks' => array(self::HAS_MANY, 'UsersPlaylistHasArtistTrack', 'artist_track_id'),
 		);
 	}
 
@@ -70,11 +75,14 @@ class ArtistTrack extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+			'users_id' => 'Users',
 			'song_name' => 'Song Name',
 			'song_url' => 'Song Url',
 			'uploaded_date' => 'Uploaded Date',
 			'song_discription' => 'Song Discription',
-			'users_id' => 'Users',
+			'total_likes' => 'Total Likes',
+			'total_comments' => 'Total Comments',
+			'total_shares' => 'Total Shares',
 			'status' => 'Status',
 			'date_time' => 'Date Time',
 		);
@@ -99,11 +107,14 @@ class ArtistTrack extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
+		$criteria->compare('users_id',$this->users_id);
 		$criteria->compare('song_name',$this->song_name,true);
 		$criteria->compare('song_url',$this->song_url,true);
 		$criteria->compare('uploaded_date',$this->uploaded_date,true);
 		$criteria->compare('song_discription',$this->song_discription,true);
-		$criteria->compare('users_id',$this->users_id);
+		$criteria->compare('total_likes',$this->total_likes);
+		$criteria->compare('total_comments',$this->total_comments);
+		$criteria->compare('total_shares',$this->total_shares);
 		$criteria->compare('status',$this->status);
 		$criteria->compare('date_time',$this->date_time,true);
 

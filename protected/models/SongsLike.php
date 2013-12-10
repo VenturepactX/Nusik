@@ -32,8 +32,8 @@ class SongsLike extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, users_id, artist_track_id, date_time', 'required'),
-			array('id, users_id, artist_track_id, status', 'numerical', 'integerOnly'=>true),
+			array('users_id, artist_track_id, date_time', 'required'),
+			array('users_id, artist_track_id, status', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, users_id, artist_track_id, status, date_time', 'safe', 'on'=>'search'),

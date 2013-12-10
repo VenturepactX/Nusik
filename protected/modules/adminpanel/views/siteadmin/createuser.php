@@ -19,12 +19,16 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
-	
-
-	<div class="row">
+  
+	<div class="row" >
 		<?php echo $form->labelEx($model,'email'); ?>
 		<?php echo $form->textField($model,'email'); ?>
 		<?php echo $form->error($model,'email'); ?>
+	</div>
+	<div class="row">
+		<?php echo $form->labelEx($model,'display_name'); ?>
+		<?php echo $form->textField($model,'display_name'); ?>
+		<?php echo $form->error($model,'display_name'); ?>
 	</div>
 
 	<div class="row">
@@ -44,7 +48,8 @@
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Submit'); ?>
 	</div>
-
+      	
+	</div><!--/span-->
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->

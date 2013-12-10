@@ -22,20 +22,32 @@
  *
  * The followings are the available model relations:
  * @property ArtistsProfile[] $artistsProfiles
- * @property Cities $cities
  * @property Users $users
  * @property Countries $countries
+ * @property Cities $cities
+ * @property ProfileHasComments[] $profileHasComments
+ * @property ReportHasProfile[] $reportHasProfiles
+ * @property Sharing[] $sharings
  */
 class Profile extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
-	public function tableName()
-	{
-		return 'profile';
-	}
-
+		public $imagePath = 'profile/';
+		public $imagePathThumb = 'profile/thumb/';
+		
+			public function tableName()
+			{
+				return 'profile';
+			}
+			protected function beforeSave() 
+			{
+			  if ($this->image instanceof CUploadedFile) {
+				  $this->image = md5($this->image->getName()) . "." . $this->image->getExtensionName();
+			  }
+			  return parent::beforeSave();
+			}
 	/**
 	 * @return array validation rules for model attributes.
 	 */
@@ -44,12 +56,13 @@ class Profile extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('users_id, countries_id, cities_id, first_name, last_name, gender, date_of_birth, zip_code, last_updated, image, contact_no, date_time, cover_photo', 'required'),
+			array('users_id, first_name, gender, date_of_birth, date_time', 'required'),
 			array('users_id, countries_id, cities_id, zip_code, status', 'numerical', 'integerOnly'=>true),
 			array('first_name, last_name, cover_photo', 'length', 'max'=>45),
 			array('gender', 'length', 'max'=>7),
 			array('image', 'length', 'max'=>50),
 			array('contact_no', 'length', 'max'=>20),
+			array('last_updated', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, users_id, countries_id, cities_id, first_name, last_name, gender, date_of_birth, zip_code, last_updated, image, contact_no, status, date_time, cover_photo', 'safe', 'on'=>'search'),
@@ -65,9 +78,12 @@ class Profile extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'artistsProfiles' => array(self::HAS_MANY, 'ArtistsProfile', 'profile_id'),
-			'cities' => array(self::BELONGS_TO, 'Cities', 'cities_id'),
 			'users' => array(self::BELONGS_TO, 'Users', 'users_id'),
 			'countries' => array(self::BELONGS_TO, 'Countries', 'countries_id'),
+			'cities' => array(self::BELONGS_TO, 'Cities', 'cities_id'),
+			'profileHasComments' => array(self::HAS_MANY, 'ProfileHasComments', 'profile_id'),
+			'reportHasProfiles' => array(self::HAS_MANY, 'ReportHasProfile', 'profile_id'),
+			'sharings' => array(self::HAS_MANY, 'Sharing', 'profile_id'),
 		);
 	}
 

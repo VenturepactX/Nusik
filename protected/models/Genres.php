@@ -30,7 +30,7 @@ class Genres extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, name, date_time', 'required'),
+			array('name', 'required'),
 			array('id, status', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>45),
 			// The following rule is used by search().

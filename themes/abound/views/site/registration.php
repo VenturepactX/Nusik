@@ -7,6 +7,7 @@ $baseUrl= Yii::app()->theme->baseUrl;
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'user-registration',
 	'htmlOptions'=>array('enctype'=>'multipart/form-data'),
+	'action'=>$this->createUrl('site/registration'),
 	// Please note: When you enable ajax validation, make sure the corresponding
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
@@ -96,7 +97,7 @@ $baseUrl= Yii::app()->theme->baseUrl;
 									</tr>
 									<tr>
 										<td><h4>Contact:</h4></td>
-										<td><?php echo $form->textField($model,'contact_no',array('size'=>45,'maxlength'=>7)); ?></td>
+										<td><?php echo $form->textField($model,'contact_no',array('size'=>45,'maxlength'=>16)); ?></td>
 									</tr>
 									<tr>
 										<td><h4>Image:</h4></td>				

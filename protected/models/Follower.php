@@ -7,6 +7,9 @@
  * @property integer $id
  * @property integer $users_id
  * @property integer $artists_profile_id
+ * @property integer $is_liked
+ * @property integer $is_shared
+ * @property integer $is_followed
  * @property integer $status
  * @property string $date_time
  *
@@ -32,12 +35,12 @@ class Follower extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, users_id, artists_profile_id', 'required'),
-			array('id, users_id, artists_profile_id, status', 'numerical', 'integerOnly'=>true),
+			array('users_id, artists_profile_id', 'required'),
+			array('users_id, artists_profile_id, is_liked, is_shared, is_followed, status', 'numerical', 'integerOnly'=>true),
 			array('date_time', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, users_id, artists_profile_id, status, date_time', 'safe', 'on'=>'search'),
+			array('id, users_id, artists_profile_id, is_liked, is_shared, is_followed, status, date_time', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,6 +66,9 @@ class Follower extends CActiveRecord
 			'id' => 'ID',
 			'users_id' => 'Users',
 			'artists_profile_id' => 'Artists Profile',
+			'is_liked' => 'Is Liked',
+			'is_shared' => 'Is Shared',
+			'is_followed' => 'Is Followed',
 			'status' => 'Status',
 			'date_time' => 'Date Time',
 		);
@@ -89,6 +95,9 @@ class Follower extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('users_id',$this->users_id);
 		$criteria->compare('artists_profile_id',$this->artists_profile_id);
+		$criteria->compare('is_liked',$this->is_liked);
+		$criteria->compare('is_shared',$this->is_shared);
+		$criteria->compare('is_followed',$this->is_followed);
 		$criteria->compare('status',$this->status);
 		$criteria->compare('date_time',$this->date_time,true);
 

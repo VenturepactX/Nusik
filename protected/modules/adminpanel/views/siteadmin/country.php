@@ -1,7 +1,7 @@
 <?php
- echo CHtml::link('Country Management',array('siteadmin/country'),array('class'=>'btn btn-primary')); ?>&nbsp;&nbsp;
-<?php echo CHtml::link('City Management',array('city/citymgt'),array('class'=>'btn btn-primary')); ?>&nbsp;&nbsp;
-<?php echo CHtml::link('Genere Management',array('genre/genremgt'),array('class'=>'btn btn-primary')); ?>&nbsp;&nbsp;<br><br>
+ echo CHtml::link('Country Management',array('siteadmin/country'),array('class'=>'btn btn-info')); ?>&nbsp;&nbsp;
+<?php echo CHtml::link('City Management',array('city/citymgt'),array('class'=>'btn btn-success')); ?>&nbsp;&nbsp;
+<?php echo CHtml::link('Genere Management',array('genre/genremgt'),array('class'=>'btn btn-white')); ?>&nbsp;&nbsp;<br><br>
 <h3>Country Management</h3>
 <?php
 $this->widget('zii.widgets.grid.CGridView', array(

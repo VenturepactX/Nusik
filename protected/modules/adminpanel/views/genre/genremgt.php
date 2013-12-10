@@ -20,9 +20,9 @@ var datastring='a='+document.getElementById("genrename").value;
 }
 </script>
 <?php
- echo CHtml::link('Country Management',array('siteadmin/country'),array('class'=>'btn btn-primary')); ?>&nbsp;&nbsp;
-<?php echo CHtml::link('City Management',array('city/citymgt'),array('class'=>'btn btn-primary')); ?>&nbsp;&nbsp;
-<?php echo CHtml::link('Genere Management',array('genre/genremgt'),array('class'=>'btn btn-primary')); ?>&nbsp;&nbsp;<br><br>
+ echo CHtml::link('Country Management',array('siteadmin/country'),array('class'=>'btn btn-info')); ?>&nbsp;&nbsp;
+<?php echo CHtml::link('City Management',array('city/citymgt'),array('class'=>'btn btn-success')); ?>&nbsp;&nbsp;
+<?php echo CHtml::link('Genere Management',array('genre/genremgt'),array('class'=>'btn btn-white')); ?>&nbsp;&nbsp;<br><br>
 <h3>Genre Management</h3>
 
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -31,7 +31,7 @@ var datastring='a='+document.getElementById("genrename").value;
 )); ?>
 <br>
 <?php echo CHtml::textField('Text','', array('id'=>'genrename')); ?>&nbsp;&nbsp;<br>
-<?php echo CHtml::link('Add Genere','javascript:void(0);',array('class'=>'btn btn-danger','onclick'=>'addgenre();')); ?>
+<?php echo CHtml::link('Add Genere','javascript:void(0);',array('class'=>'btn btn-success','onclick'=>'addgenre();')); ?>
 <?php $this->endWidget(); ?>
 <?php
 $this->widget('zii.widgets.grid.CGridView', array(
@@ -43,9 +43,8 @@ $this->widget('zii.widgets.grid.CGridView', array(
 		'status',
 		array( 
 			'class'=>'CButtonColumn',
-			'template'=>'{update}{delete}',
-		        'updateButtonUrl'=>'Yii::app()->createUrl("/adminpanel/siteadmin/userupdate", array("id"=>$data->primaryKey))',
-			'deleteButtonUrl'=>'Yii::app()->createUrl("/adminpanel/siteadmin/deletegenre", array("id"=>$data->primaryKey))',
+			'template'=>'{delete}',
+		        			'deleteButtonUrl'=>'Yii::app()->createUrl("/adminpanel/siteadmin/deletegenre", array("id"=>$data->primaryKey))',
 		),
 		),
 		
